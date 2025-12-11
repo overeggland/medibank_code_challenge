@@ -1,0 +1,329 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		OBJ_APP_BUILD /* MedibankNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_APP_FILE /* MedibankNewsApp.swift */; };
+		OBJ_ARTICLE_BUILD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLE_FILE /* Article.swift */; };
+		OBJ_SERVICE_BUILD /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SERVICE_FILE /* NewsService.swift */; };
+		OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */; };
+		OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_LISTVIEW_FILE /* ArticleListView.swift */; };
+		OBJ_ROW_BUILD /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ROW_FILE /* ArticleRow.swift */; };
+		OBJ_ASSETS_BUILD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_ASSETS_FILE /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		OBJ_APP_FILE /* MedibankNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedibankNewsApp.swift; sourceTree = "<group>"; };
+		OBJ_ARTICLE_FILE /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		OBJ_SERVICE_FILE /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		OBJ_LISTVIEW_FILE /* ArticleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListView.swift; sourceTree = "<group>"; };
+		OBJ_ROW_FILE /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
+		OBJ_ASSETS_FILE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		OBJ_PLIST_FILE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		OBJ_PRODUCT /* MedibankNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = MedibankNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_FRAMEWORKS_BUILD_PHASE = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		OBJ_ROOT_GROUP = {
+			isa = PBXGroup;
+			children = (
+				OBJ_SOURCES_GROUP,
+				OBJ_RESOURCES_GROUP,
+				OBJ_PLIST_FILE /* Info.plist */,
+				OBJ_PRODUCTS_GROUP,
+			);
+			sourceTree = "<group>";
+		};
+		OBJ_PRODUCTS_GROUP = {
+			isa = PBXGroup;
+			children = (
+				OBJ_PRODUCT /* MedibankNews.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		OBJ_SOURCES_GROUP = {
+			isa = PBXGroup;
+			children = (
+				OBJ_APP_FILE /* MedibankNewsApp.swift */,
+				OBJ_MODELS_GROUP,
+				OBJ_SERVICES_GROUP,
+				OBJ_VIEWMODELS_GROUP,
+				OBJ_VIEWS_GROUP,
+			);
+			name = Sources;
+			path = "";
+			sourceTree = "<group>";
+		};
+		OBJ_MODELS_GROUP = {
+			isa = PBXGroup;
+			children = (
+				OBJ_ARTICLE_FILE /* Article.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		OBJ_SERVICES_GROUP = {
+			isa = PBXGroup;
+			children = (
+				OBJ_SERVICE_FILE /* NewsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		OBJ_VIEWMODELS_GROUP = {
+			isa = PBXGroup;
+			children = (
+				OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		OBJ_VIEWS_GROUP = {
+			isa = PBXGroup;
+			children = (
+				OBJ_LISTVIEW_FILE /* ArticleListView.swift */,
+				OBJ_ROW_FILE /* ArticleRow.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		OBJ_RESOURCES_GROUP = {
+			isa = PBXGroup;
+			children = (
+				OBJ_ASSETS_FILE /* Assets.xcassets */,
+			);
+			name = Resources;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		OBJ_MAIN_TARGET = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_TARGET_CONFIG_LIST;
+			buildPhases = (
+				OBJ_SOURCES_BUILD_PHASE,
+				OBJ_FRAMEWORKS_BUILD_PHASE,
+				OBJ_RESOURCES_BUILD_PHASE,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MedibankNews;
+			productName = MedibankNews;
+			productReference = OBJ_PRODUCT /* MedibankNews.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_PROJECT = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1500;
+				BuildIndependentTargetsInParallel = YES;
+				ORGANIZATIONNAME = "Your Org";
+				TargetAttributes = {
+					OBJ_MAIN_TARGET = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = OBJ_PROJECT_CONFIG_LIST;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = OBJ_ROOT_GROUP;
+			productRefGroup = OBJ_PRODUCTS_GROUP;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				OBJ_MAIN_TARGET,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		OBJ_RESOURCES_BUILD_PHASE = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				OBJ_ASSETS_BUILD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_SOURCES_BUILD_PHASE = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				OBJ_APP_BUILD /* MedibankNewsApp.swift in Sources */,
+				OBJ_ARTICLE_BUILD /* Article.swift in Sources */,
+				OBJ_SERVICE_BUILD /* NewsService.swift in Sources */,
+				OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */,
+				OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */,
+				OBJ_ROW_BUILD /* ArticleRow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_PROJECT_DEBUG = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		OBJ_PROJECT_RELEASE = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		OBJ_TARGET_DEBUG = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MedibankNews;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		OBJ_TARGET_RELEASE = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MedibankNews;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_PROJECT_CONFIG_LIST = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_PROJECT_DEBUG,
+				OBJ_PROJECT_RELEASE,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_TARGET_CONFIG_LIST = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_TARGET_DEBUG,
+				OBJ_TARGET_RELEASE,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+
+	rootObject = OBJ_PROJECT;
+}
