@@ -19,20 +19,7 @@ struct NewsService: NewsServicing {
             return Article.previews
         }
 
-        var components = URLComponents(string: "\(NewsAPIConstants.baseURLString)\(NewsAPIConstants.topHeadlinesPath)")!
-        var queryItems: [URLQueryItem] = [
-            URLQueryItem(name: "country", value: country.rawValue),
-            URLQueryItem(name: "apiKey", value: apiKey),
-            URLQueryItem(name: "pageSize", value: "\(NewsAPIConstants.defaultPageSize)")
-        ]
-
-        if let category {
-            queryItems.append(URLQueryItem(name: "category", value: category.rawValue))
-        }
-
-        components.queryItems = queryItems
-
-        guard let url = components.url else {
+        guard let url = NewsAPIConstants.topHeadlinesURL(country: country, category: category) else {
             throw NewsAPIError.invalidResponse
         }
 
