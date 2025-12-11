@@ -3,33 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		OBJ_APP_BUILD /* MedibankNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_APP_FILE /* MedibankNewsApp.swift */; };
 		OBJ_ARTICLE_BUILD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLE_FILE /* Article.swift */; };
-		OBJ_SERVICE_BUILD /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SERVICE_FILE /* NewsService.swift */; };
-		OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */; };
+		OBJ_ASSETS_BUILD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_ASSETS_FILE /* Assets.xcassets */; };
 		OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_LISTVIEW_FILE /* ArticleListView.swift */; };
 		OBJ_ROW_BUILD /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ROW_FILE /* ArticleRow.swift */; };
-		OBJ_ASSETS_BUILD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_ASSETS_FILE /* Assets.xcassets */; };
+		OBJ_SERVICE_BUILD /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SERVICE_FILE /* NewsService.swift */; };
+		OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		OBJ_APP_FILE /* MedibankNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedibankNewsApp.swift; sourceTree = "<group>"; };
 		OBJ_ARTICLE_FILE /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		OBJ_SERVICE_FILE /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
-		OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
-		OBJ_LISTVIEW_FILE /* ArticleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListView.swift; sourceTree = "<group>"; };
-		OBJ_ROW_FILE /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
 		OBJ_ASSETS_FILE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		OBJ_LISTVIEW_FILE /* ArticleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListView.swift; sourceTree = "<group>"; };
 		OBJ_PLIST_FILE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_PRODUCT /* MedibankNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = MedibankNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_ROW_FILE /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
+		OBJ_SERVICE_FILE /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_FRAMEWORKS_BUILD_PHASE = {
+		OBJ_FRAMEWORKS_BUILD_PHASE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,38 +39,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_ROOT_GROUP = {
-			isa = PBXGroup;
-			children = (
-				OBJ_SOURCES_GROUP,
-				OBJ_RESOURCES_GROUP,
-				OBJ_PLIST_FILE /* Info.plist */,
-				OBJ_PRODUCTS_GROUP,
-			);
-			sourceTree = "<group>";
-		};
-		OBJ_PRODUCTS_GROUP = {
-			isa = PBXGroup;
-			children = (
-				OBJ_PRODUCT /* MedibankNews.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		OBJ_SOURCES_GROUP = {
-			isa = PBXGroup;
-			children = (
-				OBJ_APP_FILE /* MedibankNewsApp.swift */,
-				OBJ_MODELS_GROUP,
-				OBJ_SERVICES_GROUP,
-				OBJ_VIEWMODELS_GROUP,
-				OBJ_VIEWS_GROUP,
-			);
-			name = Sources;
-			path = "";
-			sourceTree = "<group>";
-		};
-		OBJ_MODELS_GROUP = {
+		OBJ_MODELS_GROUP /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_ARTICLE_FILE /* Article.swift */,
@@ -78,7 +47,33 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		OBJ_SERVICES_GROUP = {
+		OBJ_PRODUCTS_GROUP /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_PRODUCT /* MedibankNews.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		OBJ_RESOURCES_GROUP /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_ASSETS_FILE /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		OBJ_ROOT_GROUP = {
+			isa = PBXGroup;
+			children = (
+				OBJ_SOURCES_GROUP /* Sources */,
+				OBJ_RESOURCES_GROUP /* Resources */,
+				OBJ_PLIST_FILE /* Info.plist */,
+				OBJ_PRODUCTS_GROUP /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		OBJ_SERVICES_GROUP /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_SERVICE_FILE /* NewsService.swift */,
@@ -86,7 +81,19 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		OBJ_VIEWMODELS_GROUP = {
+		OBJ_SOURCES_GROUP /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_APP_FILE /* MedibankNewsApp.swift */,
+				OBJ_MODELS_GROUP /* Models */,
+				OBJ_SERVICES_GROUP /* Services */,
+				OBJ_VIEWMODELS_GROUP /* ViewModels */,
+				OBJ_VIEWS_GROUP /* Views */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		OBJ_VIEWMODELS_GROUP /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */,
@@ -94,7 +101,7 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		OBJ_VIEWS_GROUP = {
+		OBJ_VIEWS_GROUP /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_LISTVIEW_FILE /* ArticleListView.swift */,
@@ -103,25 +110,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		OBJ_RESOURCES_GROUP = {
-			isa = PBXGroup;
-			children = (
-				OBJ_ASSETS_FILE /* Assets.xcassets */,
-			);
-			name = Resources;
-			path = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		OBJ_MAIN_TARGET = {
+		OBJ_MAIN_TARGET /* MedibankNews */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_TARGET_CONFIG_LIST;
+			buildConfigurationList = OBJ_TARGET_CONFIG_LIST /* Build configuration list for PBXNativeTarget "MedibankNews" */;
 			buildPhases = (
-				OBJ_SOURCES_BUILD_PHASE,
-				OBJ_FRAMEWORKS_BUILD_PHASE,
-				OBJ_RESOURCES_BUILD_PHASE,
+				OBJ_SOURCES_BUILD_PHASE /* Sources */,
+				OBJ_FRAMEWORKS_BUILD_PHASE /* Frameworks */,
+				OBJ_RESOURCES_BUILD_PHASE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -135,11 +133,11 @@
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		OBJ_PROJECT = {
+		OBJ_PROJECT /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1500;
 				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Your Org";
 				TargetAttributes = {
 					OBJ_MAIN_TARGET = {
@@ -147,7 +145,7 @@
 					};
 				};
 			};
-			buildConfigurationList = OBJ_PROJECT_CONFIG_LIST;
+			buildConfigurationList = OBJ_PROJECT_CONFIG_LIST /* Build configuration list for PBXProject "MedibankNews" */;
 			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -156,17 +154,17 @@
 				Base,
 			);
 			mainGroup = OBJ_ROOT_GROUP;
-			productRefGroup = OBJ_PRODUCTS_GROUP;
+			productRefGroup = OBJ_PRODUCTS_GROUP /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				OBJ_MAIN_TARGET,
+				OBJ_MAIN_TARGET /* MedibankNews */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		OBJ_RESOURCES_BUILD_PHASE = {
+		OBJ_RESOURCES_BUILD_PHASE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -177,7 +175,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_SOURCES_BUILD_PHASE = {
+		OBJ_SOURCES_BUILD_PHASE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -193,7 +191,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		OBJ_PROJECT_DEBUG = {
+		OBJ_PROJECT_DEBUG /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -227,7 +225,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_PROJECT_RELEASE = {
+		OBJ_PROJECT_RELEASE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -260,7 +258,7 @@
 			};
 			name = Release;
 		};
-		OBJ_TARGET_DEBUG = {
+		OBJ_TARGET_DEBUG /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -280,7 +278,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_TARGET_RELEASE = {
+		OBJ_TARGET_RELEASE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -303,27 +301,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		OBJ_PROJECT_CONFIG_LIST = {
+		OBJ_PROJECT_CONFIG_LIST /* Build configuration list for PBXProject "MedibankNews" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_PROJECT_DEBUG,
-				OBJ_PROJECT_RELEASE,
+				OBJ_PROJECT_DEBUG /* Debug */,
+				OBJ_PROJECT_RELEASE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_TARGET_CONFIG_LIST = {
+		OBJ_TARGET_CONFIG_LIST /* Build configuration list for PBXNativeTarget "MedibankNews" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_TARGET_DEBUG,
-				OBJ_TARGET_RELEASE,
+				OBJ_TARGET_DEBUG /* Debug */,
+				OBJ_TARGET_RELEASE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
 	};
-
-	rootObject = OBJ_PROJECT;
+	rootObject = OBJ_PROJECT /* Project object */;
 }

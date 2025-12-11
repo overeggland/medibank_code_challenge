@@ -6,11 +6,10 @@ protocol NewsServicing {
 
 struct NewsService: NewsServicing {
     private let apiKey: String?
-    private static let defaultAPIKey = "c5669d85cb5c453ca6335bf6ac10108d"
     private let session: URLSession
 
     init(apiKey: String? = nil, session: URLSession = .shared) {
-        self.apiKey = apiKey ?? Self.defaultAPIKey
+        self.apiKey = apiKey ?? NewsAPIConstants.defaultAPIKey
         self.session = session
     }
 
@@ -20,10 +19,11 @@ struct NewsService: NewsServicing {
             return Article.previews
         }
 
-        var components = URLComponents(string: "https://newsapi.org/v2/top-headlines")!
+        var components = URLComponents(string: "\(NewsAPIConstants.baseURLString)/v2/top-headlines")!
         var queryItems: [URLQueryItem] = [
             URLQueryItem(name: "country", value: country),
-            URLQueryItem(name: "apiKey", value: apiKey)
+            URLQueryItem(name: "apiKey", value: apiKey),
+            URLQueryItem(name: "pageSize", value: "\(NewsAPIConstants.defaultPageSize)")
         ]
 
         if let category, !category.isEmpty {
