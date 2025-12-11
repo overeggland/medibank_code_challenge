@@ -5,5 +5,4 @@ enum NewsCountry: String, CaseIterable, Hashable {
     case ca
     case de
     case fr
-    case in
 }

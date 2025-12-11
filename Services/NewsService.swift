@@ -19,7 +19,7 @@ struct NewsService: NewsServicing {
             return Article.previews
         }
 
-        var components = URLComponents(string: "\(NewsAPIConstants.baseURLString)/v2/top-headlines")!
+        var components = URLComponents(string: "\(NewsAPIConstants.baseURLString)\(NewsAPIConstants.topHeadlinesPath)")!
         var queryItems: [URLQueryItem] = [
             URLQueryItem(name: "country", value: country.rawValue),
             URLQueryItem(name: "apiKey", value: apiKey),
