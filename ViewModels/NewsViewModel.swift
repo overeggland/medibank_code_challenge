@@ -12,7 +12,7 @@ final class NewsViewModel: ObservableObject {
         self.service = service
     }
 
-    func loadTopHeadlines(country: String = "us", category: String? = "business") async {
+    func loadTopHeadlines(country: NewsCountry = .us, category: NewsCategory? = .business) async {
         guard !isLoading else { return }
         isLoading = true
         errorMessage = nil

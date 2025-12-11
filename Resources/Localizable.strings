@@ -1,0 +1,3 @@
+"error.invalid_response" = "The server returned an invalid response.";
+"error.http_status" = "The server responded with status code %d.";
+"error.decoding" = "Unable to decode the response.";

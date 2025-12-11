@@ -1,7 +1,7 @@
 import Foundation
 
 protocol NewsServicing {
-    func fetchTopHeadlines(country: String, category: String?) async throws -> [Article]
+    func fetchTopHeadlines(country: NewsCountry, category: NewsCategory?) async throws -> [Article]
 }
 
 struct NewsService: NewsServicing {
@@ -13,7 +13,7 @@ struct NewsService: NewsServicing {
         self.session = session
     }
 
-    func fetchTopHeadlines(country: String = "us", category: String? = "business") async throws -> [Article] {
+    func fetchTopHeadlines(country: NewsCountry = .us, category: NewsCategory? = .business) async throws -> [Article] {
         guard let apiKey else {
             // Provide offline preview data when no key is set.
             return Article.previews
@@ -21,13 +21,13 @@ struct NewsService: NewsServicing {
 
         var components = URLComponents(string: "\(NewsAPIConstants.baseURLString)/v2/top-headlines")!
         var queryItems: [URLQueryItem] = [
-            URLQueryItem(name: "country", value: country),
+            URLQueryItem(name: "country", value: country.rawValue),
             URLQueryItem(name: "apiKey", value: apiKey),
             URLQueryItem(name: "pageSize", value: "\(NewsAPIConstants.defaultPageSize)")
         ]
 
-        if let category, !category.isEmpty {
-            queryItems.append(URLQueryItem(name: "category", value: category))
+        if let category {
+            queryItems.append(URLQueryItem(name: "category", value: category.rawValue))
         }
 
         components.queryItems = queryItems
@@ -36,7 +36,9 @@ struct NewsService: NewsServicing {
             throw NewsAPIError.invalidResponse
         }
 
+#if DEBUG
         print("Fetching headlines: \(url.absoluteString)")
+#endif
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
