@@ -32,7 +32,13 @@ struct NewsService: NewsServicing {
 
         components.queryItems = queryItems
 
-        var request = URLRequest(url: components.url!)
+        guard let url = components.url else {
+            throw NewsAPIError.invalidResponse
+        }
+
+        print("Fetching headlines: \(url.absoluteString)")
+
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
 

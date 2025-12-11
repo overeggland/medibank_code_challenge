@@ -25,4 +25,10 @@ final class NewsViewModel: ObservableObject {
 
         isLoading = false
     }
+
+    /// Unique list of sources across the currently loaded articles, sorted by name.
+    var sources: [Article.Source] {
+        Array(Set(articles.map { $0.source }))
+            .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+    }
 }
