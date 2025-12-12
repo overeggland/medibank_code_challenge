@@ -5,21 +5,21 @@ protocol NewsServicing {
 }
 
 struct NewsService: NewsServicing {
-    private let apiKey: String?
+    private let apiKey: String
     private let session: URLSession
 
-    init(apiKey: String? = nil, session: URLSession = .shared) {
-        self.apiKey = apiKey ?? NewsAPIConstants.defaultAPIKey
+    init(apiKey: String = NewsAPIConstants.defaultAPIKey, session: URLSession = .shared) {
+        self.apiKey = apiKey
         self.session = session
     }
 
     func fetchTopHeadlines(country: NewsCountry = .us, category: NewsCategory? = .business) async throws -> [Article] {
-        guard let apiKey else {
-            // Provide offline preview data when no key is set.
+        // If API key is empty, return preview data (for testing/preview mode)
+        guard !apiKey.isEmpty else {
             return Article.previews
         }
 
-        guard let url = NewsAPIConstants.topHeadlinesURL(country: country, category: category) else {
+        guard let url = NewsAPIConstants.topHeadlinesURL(country: country, category: category, apiKey: apiKey) else {
             throw NewsAPIError.invalidResponse
         }
 

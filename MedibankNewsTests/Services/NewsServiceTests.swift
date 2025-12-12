@@ -10,8 +10,8 @@ struct NewsServiceTests {
     
     @Test("Fetch top headlines without API key returns preview data")
     func testFetchTopHeadlinesWithoutAPIKey() async throws {
-        // Given
-        let serviceWithoutKey = NewsService(apiKey: nil)
+        // Given - pass empty string to explicitly disable API key
+        let serviceWithoutKey = NewsService(apiKey: "")
         
         // When
         let articles = try await serviceWithoutKey.fetchTopHeadlines()
@@ -26,7 +26,8 @@ struct NewsServiceTests {
         // 1. Use URLProtocol-based mocking, or
         // 2. Refactor NewsService to accept a URLSessionProtocol
         // For now, we test the offline/preview mode
-        let serviceWithoutKey = NewsService(apiKey: nil)
+        // Given - pass empty string to explicitly disable API key
+        let serviceWithoutKey = NewsService(apiKey: "")
         let articles = try await serviceWithoutKey.fetchTopHeadlines()
         #expect(articles == Article.previews)
     }
@@ -36,7 +37,8 @@ struct NewsServiceTests {
         // Note: This test requires network mocking to verify URL parameters.
         // Testing URL construction logic separately would be ideal.
         // For now, we verify the method accepts parameters without error
-        let serviceWithoutKey = NewsService(apiKey: nil)
+        // Given - pass empty string to explicitly disable API key
+        let serviceWithoutKey = NewsService(apiKey: "")
         let articles = try await serviceWithoutKey.fetchTopHeadlines(country: .au, category: .technology)
         #expect(articles == Article.previews) // Returns previews when no API key
     }
