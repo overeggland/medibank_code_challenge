@@ -10,9 +10,7 @@
 		OBJ_APP_BUILD /* MedibankNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_APP_FILE /* MedibankNewsApp.swift */; };
 		OBJ_ARTICLE_BUILD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLE_FILE /* Article.swift */; };
 		OBJ_ASSETS_BUILD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_ASSETS_FILE /* Assets.xcassets */; };
-		OBJ_CATEGORY_BUILD /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_CATEGORY_FILE /* NewsCategory.swift */; };
 		OBJ_CONSTANTS_BUILD /* NewsAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */; };
-		OBJ_COUNTRY_BUILD /* NewsCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_COUNTRY_FILE /* NewsCountry.swift */; };
 		OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_LISTVIEW_FILE /* ArticleListView.swift */; };
 		OBJ_LOCALIZABLE_BUILD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_LOCALIZABLE_FILE /* Localizable.strings */; };
 		OBJ_ROW_BUILD /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ROW_FILE /* ArticleRow.swift */; };
@@ -24,19 +22,24 @@
 		OBJ_SAVEDSERVICE_BUILD /* SavedArticlesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDSERVICE_FILE /* SavedArticlesService.swift */; };
 		OBJ_SAVEDVIEWMODEL_BUILD /* SavedArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDVIEWMODEL_FILE /* SavedArticlesViewModel.swift */; };
 		OBJ_SAVEDLISTVIEW_BUILD /* SavedArticlesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDLISTVIEW_FILE /* SavedArticlesListView.swift */; };
+		OBJ_MOCKNEWS_BUILD /* MockNewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_MOCKNEWS_FILE /* MockNewsService.swift */; };
+		OBJ_MOCKSAVED_BUILD /* MockSavedArticlesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_MOCKSAVED_FILE /* MockSavedArticlesService.swift */; };
+		OBJ_NEWSVIEWMODELTEST_BUILD /* NewsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_NEWSVIEWMODELTEST_FILE /* NewsViewModelTests.swift */; };
+		OBJ_SAVEDVIEWMODELTEST_BUILD /* SavedArticlesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDVIEWMODELTEST_FILE /* SavedArticlesViewModelTests.swift */; };
+		OBJ_NEWSSERVICETEST_BUILD /* NewsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_NEWSSERVICETEST_FILE /* NewsServiceTests.swift */; };
+		OBJ_SAVEDSERVICETEST_BUILD /* SavedArticlesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDSERVICETEST_FILE /* SavedArticlesServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		OBJ_APP_FILE /* MedibankNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedibankNewsApp.swift; sourceTree = "<group>"; };
 		OBJ_ARTICLE_FILE /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		OBJ_ASSETS_FILE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		OBJ_CATEGORY_FILE /* NewsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategory.swift; sourceTree = "<group>"; };
 		OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIConstants.swift; sourceTree = "<group>"; };
-		OBJ_COUNTRY_FILE /* NewsCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCountry.swift; sourceTree = "<group>"; };
 		OBJ_LISTVIEW_FILE /* ArticleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListView.swift; sourceTree = "<group>"; };
 		OBJ_LOCALIZABLE_FILE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		OBJ_PLIST_FILE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_PRODUCT /* MedibankNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = MedibankNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_TEST_PRODUCT /* MedibankNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = MedibankNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_ROW_FILE /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
 		OBJ_SERVICE_FILE /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		OBJ_SOURCESVIEW_FILE /* SourcesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesListView.swift; sourceTree = "<group>"; };
@@ -46,10 +49,23 @@
 		OBJ_SAVEDSERVICE_FILE /* SavedArticlesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesService.swift; sourceTree = "<group>"; };
 		OBJ_SAVEDVIEWMODEL_FILE /* SavedArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesViewModel.swift; sourceTree = "<group>"; };
 		OBJ_SAVEDLISTVIEW_FILE /* SavedArticlesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesListView.swift; sourceTree = "<group>"; };
+		OBJ_MOCKNEWS_FILE /* MockNewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNewsService.swift; sourceTree = "<group>"; };
+		OBJ_MOCKSAVED_FILE /* MockSavedArticlesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSavedArticlesService.swift; sourceTree = "<group>"; };
+		OBJ_NEWSVIEWMODELTEST_FILE /* NewsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModelTests.swift; sourceTree = "<group>"; };
+		OBJ_SAVEDVIEWMODELTEST_FILE /* SavedArticlesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesViewModelTests.swift; sourceTree = "<group>"; };
+		OBJ_NEWSSERVICETEST_FILE /* NewsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsServiceTests.swift; sourceTree = "<group>"; };
+		OBJ_SAVEDSERVICETEST_FILE /* SavedArticlesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		OBJ_FRAMEWORKS_BUILD_PHASE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_TEST_FRAMEWORKS_BUILD_PHASE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -71,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_PRODUCT /* MedibankNews.app */,
+				OBJ_TEST_PRODUCT /* MedibankNewsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,7 +108,45 @@
 				OBJ_RESOURCES_GROUP /* Resources */,
 				OBJ_PLIST_FILE /* Info.plist */,
 				OBJ_PRODUCTS_GROUP /* Products */,
+				OBJ_TESTS_GROUP /* MedibankNewsTests */,
 			);
+			sourceTree = "<group>";
+		};
+		OBJ_TESTS_GROUP /* MedibankNewsTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_TESTS_MOCKS_GROUP /* Mocks */,
+				OBJ_TESTS_VIEWMODELS_GROUP /* ViewModels */,
+				OBJ_TESTS_SERVICES_GROUP /* Services */,
+			);
+			path = MedibankNewsTests;
+			sourceTree = "<group>";
+		};
+		OBJ_TESTS_MOCKS_GROUP /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_MOCKNEWS_FILE /* MockNewsService.swift */,
+				OBJ_MOCKSAVED_FILE /* MockSavedArticlesService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		OBJ_TESTS_VIEWMODELS_GROUP /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_NEWSVIEWMODELTEST_FILE /* NewsViewModelTests.swift */,
+				OBJ_SAVEDVIEWMODELTEST_FILE /* SavedArticlesViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		OBJ_TESTS_SERVICES_GROUP /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_NEWSSERVICETEST_FILE /* NewsServiceTests.swift */,
+				OBJ_SAVEDSERVICETEST_FILE /* SavedArticlesServiceTests.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		OBJ_SERVICES_GROUP /* Services */ = {
@@ -99,8 +154,6 @@
 			children = (
 				OBJ_SERVICE_FILE /* NewsService.swift */,
 				OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */,
-				OBJ_COUNTRY_FILE /* NewsCountry.swift */,
-				OBJ_CATEGORY_FILE /* NewsCategory.swift */,
 				OBJ_SAVEDSERVICE_FILE /* SavedArticlesService.swift */,
 			);
 			path = Services;
@@ -142,6 +195,13 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXTargetDependency section */
+		OBJ_TEST_TARGET_DEPENDENCY /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = OBJ_MAIN_TARGET /* MedibankNews */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXNativeTarget section */
 		OBJ_MAIN_TARGET /* MedibankNews */ = {
 			isa = PBXNativeTarget;
@@ -160,6 +220,23 @@
 			productReference = OBJ_PRODUCT /* MedibankNews.app */;
 			productType = "com.apple.product-type.application";
 		};
+		OBJ_TEST_TARGET /* MedibankNewsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_TEST_TARGET_CONFIG_LIST /* Build configuration list for PBXNativeTarget "MedibankNewsTests" */;
+			buildPhases = (
+				OBJ_TEST_SOURCES_BUILD_PHASE /* Sources */,
+				OBJ_TEST_FRAMEWORKS_BUILD_PHASE /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_TEST_TARGET_DEPENDENCY /* PBXTargetDependency */,
+			);
+			name = MedibankNewsTests;
+			productName = MedibankNewsTests;
+			productReference = OBJ_TEST_PRODUCT /* MedibankNewsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -172,6 +249,9 @@
 				TargetAttributes = {
 					OBJ_MAIN_TARGET = {
 						ProvisioningStyle = Automatic;
+					};
+					OBJ_TEST_TARGET = {
+						TestTargetID = OBJ_MAIN_TARGET /* MedibankNews */;
 					};
 				};
 			};
@@ -189,6 +269,7 @@
 			projectRoot = "";
 			targets = (
 				OBJ_MAIN_TARGET /* MedibankNews */,
+				OBJ_TEST_TARGET /* MedibankNewsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -213,8 +294,6 @@
 				OBJ_APP_BUILD /* MedibankNewsApp.swift in Sources */,
 				OBJ_ARTICLE_BUILD /* Article.swift in Sources */,
 				OBJ_CONSTANTS_BUILD /* NewsAPIConstants.swift in Sources */,
-				OBJ_COUNTRY_BUILD /* NewsCountry.swift in Sources */,
-				OBJ_CATEGORY_BUILD /* NewsCategory.swift in Sources */,
 				OBJ_SERVICE_BUILD /* NewsService.swift in Sources */,
 				OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */,
 				OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */,
@@ -225,6 +304,19 @@
 				OBJ_SAVEDSERVICE_BUILD /* SavedArticlesService.swift in Sources */,
 				OBJ_SAVEDVIEWMODEL_BUILD /* SavedArticlesViewModel.swift in Sources */,
 				OBJ_SAVEDLISTVIEW_BUILD /* SavedArticlesListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_TEST_SOURCES_BUILD_PHASE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				OBJ_MOCKNEWS_BUILD /* MockNewsService.swift in Sources */,
+				OBJ_MOCKSAVED_BUILD /* MockSavedArticlesService.swift in Sources */,
+				OBJ_NEWSVIEWMODELTEST_BUILD /* NewsViewModelTests.swift in Sources */,
+				OBJ_SAVEDVIEWMODELTEST_BUILD /* SavedArticlesViewModelTests.swift in Sources */,
+				OBJ_NEWSSERVICETEST_BUILD /* NewsServiceTests.swift in Sources */,
+				OBJ_SAVEDSERVICETEST_BUILD /* SavedArticlesServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +474,54 @@
 			};
 			name = Release;
 		};
+		OBJ_TEST_TARGET_DEBUG /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MedibankNewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MedibankNews.app/MedibankNews";
+			};
+			name = Debug;
+		};
+		OBJ_TEST_TARGET_RELEASE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MedibankNewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MedibankNews.app/MedibankNews";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -399,6 +539,15 @@
 			buildConfigurations = (
 				OBJ_TARGET_DEBUG /* Debug */,
 				OBJ_TARGET_RELEASE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_TEST_TARGET_CONFIG_LIST /* Build configuration list for PBXNativeTarget "MedibankNewsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_TEST_TARGET_DEBUG /* Debug */,
+				OBJ_TEST_TARGET_RELEASE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

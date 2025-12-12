@@ -44,4 +44,17 @@ final class SavedArticlesViewModel: ObservableObject {
             saveArticle(article)
         }
     }
+    
+    func clearAllArticles() {
+        // Get a snapshot of all articles before clearing to avoid iteration issues
+        let articlesToRemove = savedArticles
+        for article in articlesToRemove {
+            do {
+                try service.removeArticle(article)
+            } catch {
+                print("Failed to remove article: \(error)")
+            }
+        }
+        loadSavedArticles()
+    }
 }
