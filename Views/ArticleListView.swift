@@ -11,10 +11,14 @@ struct ArticleListView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if let error = viewModel.errorMessage {
                     ContentUnavailableView("Couldn’t load news", systemImage: "exclamationmark.triangle", description: Text(error))
-                } else if viewModel.articles.isEmpty {
-                    ContentUnavailableView("No articles yet", systemImage: "newspaper", description: Text("Try again in a moment."))
+                } else if viewModel.filteredArticles.isEmpty {
+                    if viewModel.selectedSources.isEmpty {
+                        ContentUnavailableView("No articles yet", systemImage: "newspaper", description: Text("Try again in a moment."))
+                    } else {
+                        ContentUnavailableView("No articles", systemImage: "newspaper", description: Text("No articles match the selected sources."))
+                    }
                 } else {
-                    List(viewModel.articles) { article in
+                    List(viewModel.filteredArticles) { article in
                         ArticleRow(article: article)
                     }
                     .listStyle(.plain)
