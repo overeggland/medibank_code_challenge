@@ -56,13 +56,20 @@ struct ArticleRow: View {
             }
             .buttonStyle(.plain)
             
-            Button {
-                savedArticlesViewModel.toggleSaveArticle(article)
-            } label: {
-                Image(systemName: savedArticlesViewModel.isArticleSaved(article) ? "heart.fill" : "heart")
-                    .foregroundStyle(savedArticlesViewModel.isArticleSaved(article) ? .red : .secondary)
+            HStack(spacing: 8) {
+                Button {
+                    savedArticlesViewModel.toggleSaveArticle(article)
+                } label: {
+                    Image(systemName: savedArticlesViewModel.isArticleSaved(article) ? "heart.fill" : "heart")
+                        .foregroundStyle(savedArticlesViewModel.isArticleSaved(article) ? .red : .secondary)
+                }
+                .buttonStyle(.plain)
+                
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
             }
-            .buttonStyle(.plain)
+            .padding(.top, 6)
         }
     }
 
