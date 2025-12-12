@@ -11,8 +11,11 @@ struct WebView: UIViewRepresentable {
     }
     
     func updateUIView(_ webView: WKWebView, context: Context) {
-        let request = URLRequest(url: url)
-        webView.load(request)
+        // Only reload if the URL has changed
+        if webView.url != url {
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
     }
     
     func makeCoordinator() -> Coordinator {
