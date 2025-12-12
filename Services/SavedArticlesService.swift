@@ -37,8 +37,12 @@ final class SavedArticlesService: SavedArticlesServicing {
     }
     
     func getAllSavedArticles() -> [Article] {
-        guard let data = userDefaults.data(forKey: savedArticlesKey),
-              let articles = try? JSONDecoder().decode([Article].self, from: data) else {
+        guard let data = userDefaults.data(forKey: savedArticlesKey) else {
+            return []
+        }
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        guard let articles = try? decoder.decode([Article].self, from: data) else {
             return []
         }
         return articles
@@ -46,6 +50,7 @@ final class SavedArticlesService: SavedArticlesServicing {
     
     private func saveArticles(_ articles: [Article]) throws {
         let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
         let data = try encoder.encode(articles)
         userDefaults.set(data, forKey: savedArticlesKey)
     }
