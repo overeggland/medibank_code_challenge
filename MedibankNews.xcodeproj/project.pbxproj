@@ -10,32 +10,36 @@
 		OBJ_APP_BUILD /* MedibankNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_APP_FILE /* MedibankNewsApp.swift */; };
 		OBJ_ARTICLE_BUILD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLE_FILE /* Article.swift */; };
 		OBJ_ASSETS_BUILD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_ASSETS_FILE /* Assets.xcassets */; };
+		OBJ_CATEGORY_BUILD /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_CATEGORY_FILE /* NewsCategory.swift */; };
+		OBJ_CONSTANTS_BUILD /* NewsAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */; };
+		OBJ_COUNTRY_BUILD /* NewsCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_COUNTRY_FILE /* NewsCountry.swift */; };
 		OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_LISTVIEW_FILE /* ArticleListView.swift */; };
+		OBJ_LOCALIZABLE_BUILD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_LOCALIZABLE_FILE /* Localizable.strings */; };
 		OBJ_ROW_BUILD /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ROW_FILE /* ArticleRow.swift */; };
 		OBJ_SERVICE_BUILD /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SERVICE_FILE /* NewsService.swift */; };
 		OBJ_SOURCESVIEW_BUILD /* SourcesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SOURCESVIEW_FILE /* SourcesListView.swift */; };
-		OBJ_CONSTANTS_BUILD /* NewsAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */; };
-		OBJ_COUNTRY_BUILD /* NewsCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_COUNTRY_FILE /* NewsCountry.swift */; };
-		OBJ_CATEGORY_BUILD /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_CATEGORY_FILE /* NewsCategory.swift */; };
 		OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */; };
-		OBJ_LOCALIZABLE_BUILD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_LOCALIZABLE_FILE /* Localizable.strings */; };
+		OBJ_WEBVIEW_BUILD /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_WEBVIEW_FILE /* WebView.swift */; };
+		OBJ_DETAILVIEW_BUILD /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_DETAILVIEW_FILE /* ArticleDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		OBJ_APP_FILE /* MedibankNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedibankNewsApp.swift; sourceTree = "<group>"; };
 		OBJ_ARTICLE_FILE /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		OBJ_ASSETS_FILE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		OBJ_CATEGORY_FILE /* NewsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategory.swift; sourceTree = "<group>"; };
+		OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIConstants.swift; sourceTree = "<group>"; };
+		OBJ_COUNTRY_FILE /* NewsCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCountry.swift; sourceTree = "<group>"; };
 		OBJ_LISTVIEW_FILE /* ArticleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListView.swift; sourceTree = "<group>"; };
+		OBJ_LOCALIZABLE_FILE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		OBJ_PLIST_FILE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_PRODUCT /* MedibankNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = MedibankNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_ROW_FILE /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
 		OBJ_SERVICE_FILE /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
-		OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIConstants.swift; sourceTree = "<group>"; };
-		OBJ_COUNTRY_FILE /* NewsCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCountry.swift; sourceTree = "<group>"; };
-		OBJ_CATEGORY_FILE /* NewsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategory.swift; sourceTree = "<group>"; };
 		OBJ_SOURCESVIEW_FILE /* SourcesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesListView.swift; sourceTree = "<group>"; };
 		OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
-		OBJ_LOCALIZABLE_FILE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		OBJ_WEBVIEW_FILE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		OBJ_DETAILVIEW_FILE /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 				OBJ_LISTVIEW_FILE /* ArticleListView.swift */,
 				OBJ_ROW_FILE /* ArticleRow.swift */,
 				OBJ_SOURCESVIEW_FILE /* SourcesListView.swift */,
+				OBJ_WEBVIEW_FILE /* WebView.swift */,
+				OBJ_DETAILVIEW_FILE /* ArticleDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,7 +158,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 2610;
 				ORGANIZATIONNAME = "Your Org";
 				TargetAttributes = {
 					OBJ_MAIN_TARGET = {
@@ -205,6 +211,8 @@
 				OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */,
 				OBJ_ROW_BUILD /* ArticleRow.swift in Sources */,
 				OBJ_SOURCESVIEW_BUILD /* SourcesListView.swift in Sources */,
+				OBJ_WEBVIEW_BUILD /* WebView.swift in Sources */,
+				OBJ_DETAILVIEW_BUILD /* ArticleDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,23 +229,45 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -255,21 +285,43 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
