@@ -15,6 +15,7 @@
 		OBJ_LOCALIZABLE_BUILD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_LOCALIZABLE_FILE /* Localizable.strings */; };
 		OBJ_ROW_BUILD /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ROW_FILE /* ArticleRow.swift */; };
 		OBJ_SERVICE_BUILD /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SERVICE_FILE /* NewsService.swift */; };
+		OBJ_LOGGER_BUILD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_LOGGER_FILE /* Logger.swift */; };
 		OBJ_SOURCESVIEW_BUILD /* SourcesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SOURCESVIEW_FILE /* SourcesListView.swift */; };
 		OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */; };
 		OBJ_WEBVIEW_BUILD /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_WEBVIEW_FILE /* WebView.swift */; };
@@ -42,6 +43,7 @@
 		OBJ_TEST_PRODUCT /* MedibankNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = MedibankNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_ROW_FILE /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
 		OBJ_SERVICE_FILE /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		OBJ_LOGGER_FILE /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		OBJ_SOURCESVIEW_FILE /* SourcesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesListView.swift; sourceTree = "<group>"; };
 		OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		OBJ_WEBVIEW_FILE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				OBJ_SERVICE_FILE /* NewsService.swift */,
 				OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */,
+				OBJ_LOGGER_FILE /* Logger.swift */,
 				OBJ_SAVEDSERVICE_FILE /* SavedArticlesService.swift */,
 			);
 			path = Services;
@@ -295,6 +298,7 @@
 				OBJ_ARTICLE_BUILD /* Article.swift in Sources */,
 				OBJ_CONSTANTS_BUILD /* NewsAPIConstants.swift in Sources */,
 				OBJ_SERVICE_BUILD /* NewsService.swift in Sources */,
+				OBJ_LOGGER_BUILD /* Logger.swift in Sources */,
 				OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */,
 				OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */,
 				OBJ_ROW_BUILD /* ArticleRow.swift in Sources */,
