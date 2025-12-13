@@ -12,16 +12,14 @@ struct ArticleListView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if let error = viewModel.errorMessage {
                     ContentUnavailableView("Couldn't load news", systemImage: "exclamationmark.triangle", description: Text(error))
+                } else if viewModel.selectedSources.isEmpty {
+                    ContentUnavailableView("No sources selected",
+                                           systemImage: "newspaper",
+                                           description: Text("Please select at least one news source to view headlines."))
                 } else if viewModel.filteredArticles.isEmpty {
-                    if viewModel.selectedSources.isEmpty {
-                        ContentUnavailableView("No articles yet",
-                                               systemImage: "newspaper",
-                                               description: Text("Try again in a moment."))
-                    } else {
-                        ContentUnavailableView("No articles",
-                                               systemImage: "newspaper",
-                                               description: Text("No articles match the selected sources."))
-                    }
+                    ContentUnavailableView("No articles",
+                                           systemImage: "newspaper",
+                                           description: Text("No articles match the selected sources."))
                 } else {
                     List(viewModel.filteredArticles) { article in
                         ArticleRow(article: article, navigationPath: $navigationPath)
