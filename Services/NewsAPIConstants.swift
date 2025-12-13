@@ -28,27 +28,42 @@ enum NewsAPIConstants {
 }
 
 extension NewsAPIConstants {
-    static func topHeadlinesURL(country: NewsCountry, category: NewsCategory?, apiKey: String) -> URL? {
+    static func topHeadlinesURL(country: NewsCountry?, category: NewsCategory?, sources: String?, pageSize: Int = defaultPageSize, apiKey: String) -> URL? {
         var components = URLComponents(string: "\(baseURLString)\(topHeadlinesPath)")
         var queryItems: [URLQueryItem] = [
-            URLQueryItem(name: "country", value: country.rawValue),
             URLQueryItem(name: "apiKey", value: apiKey),
-            URLQueryItem(name: "pageSize", value: "\(defaultPageSize)")
+            URLQueryItem(name: "pageSize", value: "\(pageSize)")
         ]
 
-        if let category {
-            queryItems.append(URLQueryItem(name: "category", value: category.rawValue))
+        // Add sources parameter if provided
+        if let sources, !sources.isEmpty {
+            queryItems.append(URLQueryItem(name: "sources", value: sources))
+        } else {
+            // Only add country and category if sources is not provided
+            if let country = country {
+                queryItems.append(URLQueryItem(name: "country", value: country.rawValue))
+            }
+            
+            if let category = category {
+                queryItems.append(URLQueryItem(name: "category", value: category.rawValue))
+            }
         }
 
         components?.queryItems = queryItems
         return components?.url
     }
     
-    static func sourcesURL(apiKey: String) -> URL? {
+    static func sourcesURL(country: NewsCountry?, apiKey: String) -> URL? {
         var components = URLComponents(string: "\(baseURLString)\(sourcesPath)")
-        components?.queryItems = [
+        var queryItems: [URLQueryItem] = [
             URLQueryItem(name: "apiKey", value: apiKey)
         ]
+        
+        if let country {
+            queryItems.append(URLQueryItem(name: "country", value: country.rawValue))
+        }
+        
+        components?.queryItems = queryItems
         return components?.url
     }
 }

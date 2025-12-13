@@ -1,8 +1,8 @@
 import Foundation
 
 protocol NewsServicing {
-    func fetchTopHeadlines(country: NewsCountry, category: NewsCategory?) async throws -> [Article]
-    func fetchSources() async throws -> [Article.Source]
+    func fetchTopHeadlines(country: NewsCountry?, category: NewsCategory?, sources: String?, pageSize: Int) async throws -> [Article]
+    func fetchSources(country: NewsCountry?) async throws -> [Article.Source]
     func loadCachedSources() -> [Article.Source]
 }
 
@@ -18,13 +18,32 @@ struct NewsService: NewsServicing {
         self.userDefaults = userDefaults
     }
 
-    func fetchTopHeadlines(country: NewsCountry = .us, category: NewsCategory? = .business) async throws -> [Article] {
+    func fetchTopHeadlines(country: NewsCountry? = .us, category: NewsCategory? = .business, sources: String? = nil, pageSize: Int = NewsAPIConstants.defaultPageSize) async throws -> [Article] {
+        // Determine which parameters to use
+        // If sources is provided and non-empty, use only sources and ignore country/category
+        let hasSources = sources != nil && !sources!.isEmpty
+        let finalCountry: NewsCountry?
+        let finalCategory: NewsCategory?
+        let finalSources: String?
+        
+        if hasSources {
+            // When sources is provided, ignore country and category
+            finalCountry = nil
+            finalCategory = nil
+            finalSources = sources
+        } else {
+            // Use country and category (with defaults)
+            finalCountry = country
+            finalCategory = category
+            finalSources = nil
+        }
+        
         // If API key is empty, return preview data (for testing/preview mode)
         guard !apiKey.isEmpty else {
             return Article.previews
         }
 
-        guard let url = NewsAPIConstants.topHeadlinesURL(country: country, category: category, apiKey: apiKey) else {
+        guard let url = NewsAPIConstants.topHeadlinesURL(country: finalCountry, category: finalCategory, sources: finalSources, pageSize: pageSize, apiKey: apiKey) else {
             throw NewsAPIError.invalidResponse
         }
 
@@ -56,7 +75,7 @@ struct NewsService: NewsServicing {
         }
     }
     
-    func fetchSources() async throws -> [Article.Source] {
+    func fetchSources(country: NewsCountry? = nil) async throws -> [Article.Source] {
         // If API key is empty, return preview data (for testing/preview mode)
         guard !apiKey.isEmpty else {
             let previewSources = [
@@ -68,7 +87,7 @@ struct NewsService: NewsServicing {
             return previewSources
         }
         
-        guard let url = NewsAPIConstants.sourcesURL(apiKey: apiKey) else {
+        guard let url = NewsAPIConstants.sourcesURL(country: country, apiKey: apiKey) else {
             // If URL creation fails, try to load from storage
             return loadSavedSources()
         }
@@ -95,15 +114,19 @@ struct NewsService: NewsServicing {
             
             let decoder = JSONDecoder()
             let payload = try decoder.decode(SourcesAPIResponse.self, from: data)
-            // Filter to only English sources
-            let englishSources = payload.sources
+            // Filter to only English sources (if country filter wasn't applied)
+            // If country was specified, the API already filtered by country
+            let filteredSources = payload.sources
                 .filter { $0.language == "en" }
-                .map { Article.Source(id: $0.id, name: $0.name) }
+                .compactMap { sourceResponse -> Article.Source? in
+                    guard let id = sourceResponse.id else { return nil }
+                    return Article.Source(id: id, name: sourceResponse.name)
+                }
             
             // Save successfully fetched sources
-            try? saveSources(englishSources)
+            try? saveSources(filteredSources)
             
-            return englishSources
+            return filteredSources
         } catch {
             // If fetch fails, try to load from storage
             return loadSavedSources()
@@ -136,6 +159,7 @@ enum NewsAPIError: LocalizedError {
     case invalidResponse
     case httpStatus(Int)
     case decoding(Error)
+    case invalidParameters(String)
 
     var errorDescription: String? {
         switch self {
@@ -145,6 +169,8 @@ enum NewsAPIError: LocalizedError {
             return "The server responded with status code \(code)."
         case .decoding:
             return "Unable to decode the response."
+        case .invalidParameters(let message):
+            return message
         }
     }
 }
