@@ -5,6 +5,7 @@ final class SavedArticlesViewModel: ObservableObject {
     @Published private(set) var savedArticles: [Article] = []
     
     private let service: SavedArticlesServicing
+    private var hasLoggedInitialLoad = false
     
     init(service: SavedArticlesServicing) {
         self.service = service
@@ -12,7 +13,13 @@ final class SavedArticlesViewModel: ObservableObject {
     }
     
     func loadSavedArticles() {
-        savedArticles = service.getAllSavedArticles()
+        let loadedArticles = service.getAllSavedArticles()
+        // Only log on initial load, not after every save/remove (those operations already log)
+        if !hasLoggedInitialLoad && !loadedArticles.isEmpty {
+            AppLogger.logCacheLoad(key: "savedArticles", itemCount: loadedArticles.count)
+            hasLoggedInitialLoad = true
+        }
+        savedArticles = loadedArticles
     }
     
     func saveArticle(_ article: Article) {
@@ -34,7 +41,8 @@ final class SavedArticlesViewModel: ObservableObject {
     }
     
     func isArticleSaved(_ article: Article) -> Bool {
-        service.isArticleSaved(article)
+        // Use cached savedArticles instead of calling service to avoid excessive logging
+        savedArticles.contains(where: { $0.id == article.id })
     }
     
     func toggleSaveArticle(_ article: Article) {

@@ -14,8 +14,9 @@ struct ArticleDetailView: View {
                         Button {
                             savedArticlesViewModel.toggleSaveArticle(article)
                         } label: {
-                            Image(systemName: savedArticlesViewModel.isArticleSaved(article) ? "heart.fill" : "heart")
-                                .foregroundStyle(savedArticlesViewModel.isArticleSaved(article) ? .red : .primary)
+                            let isSaved = savedArticlesViewModel.isArticleSaved(article)
+                            Image(systemName: isSaved ? "heart.fill" : "heart")
+                                .foregroundStyle(isSaved ? .red : .primary)
                         }
                         
                         ShareLink(item: article.url) {

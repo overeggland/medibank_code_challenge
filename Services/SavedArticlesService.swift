@@ -47,7 +47,8 @@ final class SavedArticlesService: SavedArticlesServicing {
             AppLogger.logCacheError(key: savedArticlesKey, error: NSError(domain: "Cache", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode saved articles"]))
             return []
         }
-        AppLogger.logCacheLoad(key: savedArticlesKey, itemCount: articles.count)
+        // Only log on initial load or when explicitly requested, not on every internal check
+        // Logging is handled by the ViewModel when it calls loadSavedArticles()
         return articles
     }
     
