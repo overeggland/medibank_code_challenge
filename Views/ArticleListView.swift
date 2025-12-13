@@ -21,8 +21,14 @@ struct ArticleListView: View {
                                            systemImage: "newspaper",
                                            description: Text("No articles match the selected sources."))
                 } else {
-                    List(viewModel.filteredArticles) { article in
-                        ArticleRow(article: article, navigationPath: $navigationPath)
+                    List {
+                        ForEach(Array(viewModel.filteredArticles.enumerated()), id: \.element.id) { index, article in
+                            ArticleRow(
+                                article: article,
+                                navigationPath: $navigationPath,
+                                style: index % 2 == 0 ? .horizontal : .card
+                            )
+                        }
                     }
                     .listStyle(.plain)
                     .navigationDestination(for: Article.self) { article in

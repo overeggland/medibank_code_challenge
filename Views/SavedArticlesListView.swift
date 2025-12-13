@@ -14,8 +14,14 @@ struct SavedArticlesListView: View {
                         description: Text("Tap the heart icon on any article to save it here.")
                     )
                 } else {
-                    List(savedArticlesViewModel.savedArticles) { article in
-                        ArticleRow(article: article, navigationPath: $navigationPath)
+                    List {
+                        ForEach(Array(savedArticlesViewModel.savedArticles.enumerated()), id: \.element.id) { index, article in
+                            ArticleRow(
+                                article: article,
+                                navigationPath: $navigationPath,
+                                style: index % 2 == 0 ? .horizontal : .card
+                            )
+                        }
                     }
                     .listStyle(.plain)
                     .navigationDestination(for: Article.self) { article in
