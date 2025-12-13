@@ -25,6 +25,7 @@ enum NewsAPIConstants {
     static let topHeadlinesPath = "/v2/top-headlines"
     static let sourcesPath = "/v2/top-headlines/sources"
     static let defaultPageSize = 10
+    static let defaultSelectedSourcesCount = 3
 }
 
 extension NewsAPIConstants {

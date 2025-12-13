@@ -8,21 +8,46 @@ final class NewsViewModel: ObservableObject {
     @Published private(set) var isLoadingSources = false
     @Published private(set) var errorMessage: String?
     @Published private(set) var sourcesErrorMessage: String?
-    @Published var selectedSources: Set<Article.Source> = []
+    @Published var selectedSources: Set<Article.Source> = [] {
+        didSet {
+            saveSelectedSources()
+        }
+    }
 
     private let service: NewsServicing
+    private let userDefaults: UserDefaults
+    private let selectedSourcesKey = "selectedSources"
 
-    init(service: NewsServicing) {
+    init(service: NewsServicing, userDefaults: UserDefaults = .standard) {
         self.service = service
+        self.userDefaults = userDefaults
+        
         // Load cached sources immediately on init
         let cachedSources = service.loadCachedSources()
         sources = cachedSources
         sources.sort { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
         
-        // Set first 3 cached sources as default selected if available
-        if !cachedSources.isEmpty {
-            let firstThreeSources = Array(cachedSources.prefix(3))
-            selectedSources = Set(firstThreeSources)
+        // Load persisted selected sources, or use first 3 as default
+        if let savedSelectedSources = loadSelectedSources(), !savedSelectedSources.isEmpty {
+            // Only use saved sources that still exist in the current sources list
+            let validSources = savedSelectedSources.filter { savedSource in
+                cachedSources.contains(savedSource)
+            }
+            if !validSources.isEmpty {
+                selectedSources = Set(validSources)
+            } else {
+                // If no valid saved sources, use default count as default
+                if !cachedSources.isEmpty {
+                    let defaultSources = Array(cachedSources.prefix(NewsAPIConstants.defaultSelectedSourcesCount))
+                    selectedSources = Set(defaultSources)
+                }
+            }
+        } else {
+            // No saved sources, use default count as default
+            if !cachedSources.isEmpty {
+                let defaultSources = Array(cachedSources.prefix(NewsAPIConstants.defaultSelectedSourcesCount))
+                selectedSources = Set(defaultSources)
+            }
         }
     }
 
@@ -65,11 +90,20 @@ final class NewsViewModel: ObservableObject {
             sources = fetchedSources
             sources.sort { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
             
-            // Set first 3 fetched sources as default selected sources
+            // Validate persisted selected sources against newly fetched sources
+            let currentSelectedSources = selectedSources
+            let validSelectedSources = currentSelectedSources.filter { fetchedSources.contains($0) }
+            
+            // Update selected sources to only include valid ones
+            if validSelectedSources.count != currentSelectedSources.count {
+                selectedSources = Set(validSelectedSources)
+            }
+            
+            // Set default count of fetched sources as default selected sources only if none are selected
             let shouldLoadArticles = !fetchedSources.isEmpty && selectedSources.isEmpty
             if shouldLoadArticles {
-                let firstThreeSources = Array(fetchedSources.prefix(3))
-                selectedSources = Set(firstThreeSources)
+                let defaultSources = Array(fetchedSources.prefix(NewsAPIConstants.defaultSelectedSourcesCount))
+                selectedSources = Set(defaultSources)
             }
             
             // Clear error message if we successfully got sources (even if from cache)
@@ -88,11 +122,20 @@ final class NewsViewModel: ObservableObject {
                 sources = cachedSources
                 sources.sort { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
                 
-                // Set first 3 cached sources as default selected if none are selected
+                // Validate persisted selected sources against cached sources
+                let currentSelectedSources = selectedSources
+                let validSelectedSources = currentSelectedSources.filter { cachedSources.contains($0) }
+                
+                // Update selected sources to only include valid ones
+                if validSelectedSources.count != currentSelectedSources.count {
+                    selectedSources = Set(validSelectedSources)
+                }
+                
+                // Set default count of cached sources as default selected if none are selected
                 let shouldLoadArticles = selectedSources.isEmpty && !cachedSources.isEmpty
                 if shouldLoadArticles {
-                    let firstThreeSources = Array(cachedSources.prefix(3))
-                    selectedSources = Set(firstThreeSources)
+                    let defaultSources = Array(cachedSources.prefix(NewsAPIConstants.defaultSelectedSourcesCount))
+                    selectedSources = Set(defaultSources)
                 }
                 
                 sourcesErrorMessage = nil
@@ -131,5 +174,23 @@ final class NewsViewModel: ObservableObject {
     
     func clearSourceSelection() {
         selectedSources.removeAll()
+    }
+    
+    // MARK: - Persistence
+    
+    private func saveSelectedSources() {
+        let sourcesArray = Array(selectedSources)
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(sourcesArray) {
+            userDefaults.set(data, forKey: selectedSourcesKey)
+        }
+    }
+    
+    private func loadSelectedSources() -> [Article.Source]? {
+        guard let data = userDefaults.data(forKey: selectedSourcesKey) else {
+            return nil
+        }
+        let decoder = JSONDecoder()
+        return try? decoder.decode([Article.Source].self, from: data)
     }
 }
