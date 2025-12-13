@@ -42,34 +42,44 @@ struct NewsService: NewsServicing {
         }
 
         guard let url = NewsAPIConstants.topHeadlinesURL(country: params.0, category: params.1, sources: params.2, pageSize: pageSize, apiKey: apiKey) else {
+            AppLogger.logError("Failed to create top headlines URL")
             throw NewsAPIError.invalidResponse
         }
 
-#if DEBUG
-        print("Fetching headlines: \(url.absoluteString)")
-#endif
+        AppLogger.logAPIRequest(url: url, method: "GET")
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
 
-        let (data, response) = try await session.data(for: request)
-        guard let http = response as? HTTPURLResponse else {
-            throw NewsAPIError.invalidResponse
-        }
-
-        guard (200..<300).contains(http.statusCode) else {
-            throw NewsAPIError.httpStatus(http.statusCode)
-        }
-
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-
         do {
-            let payload = try decoder.decode(NewsAPIResponse.self, from: data)
-            return payload.articles
+            let (data, response) = try await session.data(for: request)
+            guard let http = response as? HTTPURLResponse else {
+                AppLogger.logAPIError(url: url, error: NewsAPIError.invalidResponse)
+                throw NewsAPIError.invalidResponse
+            }
+
+            AppLogger.logAPIResponse(url: url, statusCode: http.statusCode, dataSize: data.count)
+
+            guard (200..<300).contains(http.statusCode) else {
+                AppLogger.logAPIError(url: url, statusCode: http.statusCode)
+                throw NewsAPIError.httpStatus(http.statusCode)
+            }
+
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+
+            do {
+                let payload = try decoder.decode(NewsAPIResponse.self, from: data)
+                AppLogger.logInfo("Successfully decoded \(payload.articles.count) articles")
+                return payload.articles
+            } catch {
+                AppLogger.logAPIError(url: url, error: NewsAPIError.decoding(error))
+                throw NewsAPIError.decoding(error)
+            }
         } catch {
-            throw NewsAPIError.decoding(error)
+            AppLogger.logAPIError(url: url, error: error)
+            throw error
         }
     }
     
@@ -87,12 +97,12 @@ struct NewsService: NewsServicing {
         
         guard let url = NewsAPIConstants.sourcesURL(country: country, apiKey: apiKey) else {
             // If URL creation fails, try to load from storage
+            AppLogger.logError("Failed to create sources URL, loading from cache")
+            AppLogger.logCacheLoad(key: savedSourcesKey)
             return loadSavedSources()
         }
         
-#if DEBUG
-        print("Fetching sources: \(url.absoluteString)")
-#endif
+        AppLogger.logAPIRequest(url: url, method: "GET")
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -102,11 +112,17 @@ struct NewsService: NewsServicing {
             let (data, response) = try await session.data(for: request)
             guard let http = response as? HTTPURLResponse else {
                 // If response is invalid, try to load from storage
+                AppLogger.logAPIError(url: url, error: NewsAPIError.invalidResponse)
+                AppLogger.logCacheLoad(key: savedSourcesKey)
                 return loadSavedSources()
             }
             
+            AppLogger.logAPIResponse(url: url, statusCode: http.statusCode, dataSize: data.count)
+            
             guard (200..<300).contains(http.statusCode) else {
                 // If HTTP status is not OK, try to load from storage
+                AppLogger.logAPIError(url: url, statusCode: http.statusCode)
+                AppLogger.logCacheLoad(key: savedSourcesKey)
                 return loadSavedSources()
             }
             
@@ -123,10 +139,13 @@ struct NewsService: NewsServicing {
             
             // Save successfully fetched sources
             try? saveSources(filteredSources)
+            AppLogger.logInfo("Successfully decoded \(filteredSources.count) sources")
             
             return filteredSources
         } catch {
             // If fetch fails, try to load from storage
+            AppLogger.logAPIError(url: url, error: error)
+            AppLogger.logCacheLoad(key: savedSourcesKey)
             return loadSavedSources()
         }
     }
@@ -135,6 +154,7 @@ struct NewsService: NewsServicing {
         let encoder = JSONEncoder()
         let data = try encoder.encode(sources)
         userDefaults.set(data, forKey: savedSourcesKey)
+        AppLogger.logCacheSave(key: savedSourcesKey, itemCount: sources.count)
     }
     
     func loadCachedSources() -> [Article.Source] {
@@ -143,12 +163,15 @@ struct NewsService: NewsServicing {
     
     private func loadSavedSources() -> [Article.Source] {
         guard let data = userDefaults.data(forKey: savedSourcesKey) else {
+            AppLogger.logCacheMiss(key: savedSourcesKey)
             return []
         }
         let decoder = JSONDecoder()
         guard let sources = try? decoder.decode([Article.Source].self, from: data) else {
+            AppLogger.logCacheError(key: savedSourcesKey, error: NSError(domain: "Cache", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode cached sources"]))
             return []
         }
+        AppLogger.logCacheLoad(key: savedSourcesKey, itemCount: sources.count)
         return sources
     }
 }

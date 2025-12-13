@@ -183,14 +183,23 @@ final class NewsViewModel: ObservableObject {
         let encoder = JSONEncoder()
         if let data = try? encoder.encode(sourcesArray) {
             userDefaults.set(data, forKey: selectedSourcesKey)
+            AppLogger.logCacheSave(key: selectedSourcesKey, itemCount: sourcesArray.count)
+        } else {
+            AppLogger.logCacheError(key: selectedSourcesKey, error: NSError(domain: "Cache", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to encode selected sources"]))
         }
     }
     
     private func loadSelectedSources() -> [Article.Source]? {
         guard let data = userDefaults.data(forKey: selectedSourcesKey) else {
+            AppLogger.logCacheMiss(key: selectedSourcesKey)
             return nil
         }
         let decoder = JSONDecoder()
-        return try? decoder.decode([Article.Source].self, from: data)
+        guard let sources = try? decoder.decode([Article.Source].self, from: data) else {
+            AppLogger.logCacheError(key: selectedSourcesKey, error: NSError(domain: "Cache", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode selected sources"]))
+            return nil
+        }
+        AppLogger.logCacheLoad(key: selectedSourcesKey, itemCount: sources.count)
+        return sources
     }
 }

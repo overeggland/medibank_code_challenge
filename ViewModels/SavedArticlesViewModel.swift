@@ -20,7 +20,7 @@ final class SavedArticlesViewModel: ObservableObject {
             try service.saveArticle(article)
             loadSavedArticles()
         } catch {
-            print("Failed to save article: \(error)")
+            AppLogger.logError("Failed to save article", error: error)
         }
     }
     
@@ -29,7 +29,7 @@ final class SavedArticlesViewModel: ObservableObject {
             try service.removeArticle(article)
             loadSavedArticles()
         } catch {
-            print("Failed to remove article: \(error)")
+            AppLogger.logError("Failed to remove article", error: error)
         }
     }
     
@@ -52,7 +52,7 @@ final class SavedArticlesViewModel: ObservableObject {
             do {
                 try service.removeArticle(article)
             } catch {
-                print("Failed to remove article: \(error)")
+                AppLogger.logError("Failed to remove article", error: error)
             }
         }
         loadSavedArticles()

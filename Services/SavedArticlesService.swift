@@ -38,13 +38,16 @@ final class SavedArticlesService: SavedArticlesServicing {
     
     func getAllSavedArticles() -> [Article] {
         guard let data = userDefaults.data(forKey: savedArticlesKey) else {
+            AppLogger.logCacheMiss(key: savedArticlesKey)
             return []
         }
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         guard let articles = try? decoder.decode([Article].self, from: data) else {
+            AppLogger.logCacheError(key: savedArticlesKey, error: NSError(domain: "Cache", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode saved articles"]))
             return []
         }
+        AppLogger.logCacheLoad(key: savedArticlesKey, itemCount: articles.count)
         return articles
     }
     
@@ -53,5 +56,6 @@ final class SavedArticlesService: SavedArticlesServicing {
         encoder.dateEncodingStrategy = .iso8601
         let data = try encoder.encode(articles)
         userDefaults.set(data, forKey: savedArticlesKey)
+        AppLogger.logCacheSave(key: savedArticlesKey, itemCount: articles.count)
     }
 }
