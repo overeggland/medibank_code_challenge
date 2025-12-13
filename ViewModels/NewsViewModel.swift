@@ -3,8 +3,11 @@ import Foundation
 @MainActor
 final class NewsViewModel: ObservableObject {
     @Published private(set) var articles: [Article] = []
+    @Published private(set) var sources: [Article.Source] = []
     @Published private(set) var isLoading = false
+    @Published private(set) var isLoadingSources = false
     @Published private(set) var errorMessage: String?
+    @Published private(set) var sourcesErrorMessage: String?
     @Published var selectedSources: Set<Article.Source> = []
 
     private let service: NewsServicing
@@ -26,11 +29,20 @@ final class NewsViewModel: ObservableObject {
 
         isLoading = false
     }
+    
+    func loadSources() async {
+        guard !isLoadingSources else { return }
+        isLoadingSources = true
+        sourcesErrorMessage = nil
 
-    /// Unique list of sources across the currently loaded articles, sorted by name.
-    var sources: [Article.Source] {
-        Array(Set(articles.map { $0.source }))
-            .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+        do {
+            sources = try await service.fetchSources()
+            sources.sort { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+        } catch {
+            sourcesErrorMessage = error.localizedDescription
+        }
+
+        isLoadingSources = false
     }
     
     /// Articles filtered by selected sources. If no sources are selected, returns all articles.

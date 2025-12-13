@@ -5,39 +5,45 @@ struct SourcesListView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewModel.sources, id: \.self) { source in
-                Button {
-                    viewModel.toggleSourceSelection(source)
-                } label: {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(source.name)
-                                .font(.headline)
-                                .foregroundStyle(.primary)
-                            if let id = source.id {
-                                Text(id)
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
+            Group {
+                if viewModel.isLoadingSources {
+                    ProgressView("Loading sources…")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else if let error = viewModel.sourcesErrorMessage {
+                    ContentUnavailableView("Couldn't load sources", systemImage: "exclamationmark.triangle", description: Text(error))
+                } else if viewModel.sources.isEmpty {
+                    ContentUnavailableView("No sources", systemImage: "tray", description: Text("Tap refresh to load sources."))
+                } else {
+                    List(viewModel.sources, id: \.self) { source in
+                        Button {
+                            viewModel.toggleSourceSelection(source)
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(source.name)
+                                        .font(.headline)
+                                        .foregroundStyle(.primary)
+                                    if let id = source.id {
+                                        Text(id)
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                                
+                                Spacer()
+                                
+                                if viewModel.isSourceSelected(source) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundStyle(.blue)
+                                } else {
+                                    Image(systemName: "circle")
+                                        .foregroundStyle(.secondary)
+                                }
                             }
+                            .padding(.vertical, 6)
                         }
-                        
-                        Spacer()
-                        
-                        if viewModel.isSourceSelected(source) {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundStyle(.blue)
-                        } else {
-                            Image(systemName: "circle")
-                                .foregroundStyle(.secondary)
-                        }
+                        .buttonStyle(.plain)
                     }
-                    .padding(.vertical, 6)
-                }
-                .buttonStyle(.plain)
-            }
-            .overlay {
-                if viewModel.sources.isEmpty {
-                    ContentUnavailableView("No sources yet", systemImage: "tray", description: Text("Refresh headlines to see sources."))
                 }
             }
             .navigationTitle("Sources")
@@ -50,17 +56,17 @@ struct SourcesListView: View {
                     }
                     
                     Button {
-                        Task { await viewModel.loadTopHeadlines() }
+                        Task { await viewModel.loadSources() }
                     } label: {
                         Image(systemName: "arrow.clockwise")
                     }
-                    .disabled(viewModel.isLoading)
+                    .disabled(viewModel.isLoadingSources)
                 }
             }
         }
         .task {
-            if viewModel.articles.isEmpty {
-                await viewModel.loadTopHeadlines()
+            if viewModel.sources.isEmpty {
+                await viewModel.loadSources()
             }
         }
     }

@@ -2,6 +2,7 @@ import Foundation
 
 protocol NewsServicing {
     func fetchTopHeadlines(country: NewsCountry, category: NewsCategory?) async throws -> [Article]
+    func fetchSources() async throws -> [Article.Source]
 }
 
 struct NewsService: NewsServicing {
@@ -50,6 +51,47 @@ struct NewsService: NewsServicing {
             throw NewsAPIError.decoding(error)
         }
     }
+    
+    func fetchSources() async throws -> [Article.Source] {
+        // If API key is empty, return preview data (for testing/preview mode)
+        guard !apiKey.isEmpty else {
+            return [
+                Article.Source(id: "abc-news", name: "ABC News"),
+                Article.Source(id: "bbc-news", name: "BBC News"),
+                Article.Source(id: "cnn", name: "CNN")
+            ]
+        }
+        
+        guard let url = NewsAPIConstants.sourcesURL(apiKey: apiKey) else {
+            throw NewsAPIError.invalidResponse
+        }
+        
+#if DEBUG
+        print("Fetching sources: \(url.absoluteString)")
+#endif
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let (data, response) = try await session.data(for: request)
+        guard let http = response as? HTTPURLResponse else {
+            throw NewsAPIError.invalidResponse
+        }
+        
+        guard (200..<300).contains(http.statusCode) else {
+            throw NewsAPIError.httpStatus(http.statusCode)
+        }
+        
+        let decoder = JSONDecoder()
+        
+        do {
+            let payload = try decoder.decode(SourcesAPIResponse.self, from: data)
+            return payload.sources
+        } catch {
+            throw NewsAPIError.decoding(error)
+        }
+    }
 }
 
 enum NewsAPIError: LocalizedError {
@@ -75,4 +117,9 @@ private struct NewsAPIResponse: Codable {
     let status: String
     let totalResults: Int
     let articles: [Article]
+}
+
+private struct SourcesAPIResponse: Codable {
+    let status: String
+    let sources: [Article.Source]
 }

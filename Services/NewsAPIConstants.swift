@@ -23,6 +23,7 @@ enum NewsAPIConstants {
     static let defaultAPIKey = "c5669d85cb5c453ca6335bf6ac10108d" // Development API Key
     static let baseURLString = "https://newsapi.org"
     static let topHeadlinesPath = "/v2/top-headlines"
+    static let sourcesPath = "/v2/top-headlines/sources"
     static let defaultPageSize = 10
 }
 
@@ -40,6 +41,14 @@ extension NewsAPIConstants {
         }
 
         components?.queryItems = queryItems
+        return components?.url
+    }
+    
+    static func sourcesURL(apiKey: String) -> URL? {
+        var components = URLComponents(string: "\(baseURLString)\(sourcesPath)")
+        components?.queryItems = [
+            URLQueryItem(name: "apiKey", value: apiKey)
+        ]
         return components?.url
     }
 }
