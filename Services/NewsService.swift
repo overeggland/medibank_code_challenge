@@ -3,15 +3,19 @@ import Foundation
 protocol NewsServicing {
     func fetchTopHeadlines(country: NewsCountry, category: NewsCategory?) async throws -> [Article]
     func fetchSources() async throws -> [Article.Source]
+    func loadCachedSources() -> [Article.Source]
 }
 
 struct NewsService: NewsServicing {
     private let apiKey: String
     private let session: URLSession
-
-    init(apiKey: String = NewsAPIConstants.defaultAPIKey, session: URLSession = .shared) {
+    private let userDefaults: UserDefaults
+    private let savedSourcesKey = "savedEnglishSources"
+    
+    init(apiKey: String = NewsAPIConstants.defaultAPIKey, session: URLSession = .shared, userDefaults: UserDefaults = .standard) {
         self.apiKey = apiKey
         self.session = session
+        self.userDefaults = userDefaults
     }
 
     func fetchTopHeadlines(country: NewsCountry = .us, category: NewsCategory? = .business) async throws -> [Article] {
@@ -55,15 +59,18 @@ struct NewsService: NewsServicing {
     func fetchSources() async throws -> [Article.Source] {
         // If API key is empty, return preview data (for testing/preview mode)
         guard !apiKey.isEmpty else {
-            return [
+            let previewSources = [
                 Article.Source(id: "abc-news", name: "ABC News"),
                 Article.Source(id: "bbc-news", name: "BBC News"),
                 Article.Source(id: "cnn", name: "CNN")
             ]
+            try? saveSources(previewSources)
+            return previewSources
         }
         
         guard let url = NewsAPIConstants.sourcesURL(apiKey: apiKey) else {
-            throw NewsAPIError.invalidResponse
+            // If URL creation fails, try to load from storage
+            return loadSavedSources()
         }
         
 #if DEBUG
@@ -74,23 +81,54 @@ struct NewsService: NewsServicing {
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
-        let (data, response) = try await session.data(for: request)
-        guard let http = response as? HTTPURLResponse else {
-            throw NewsAPIError.invalidResponse
-        }
-        
-        guard (200..<300).contains(http.statusCode) else {
-            throw NewsAPIError.httpStatus(http.statusCode)
-        }
-        
-        let decoder = JSONDecoder()
-        
         do {
+            let (data, response) = try await session.data(for: request)
+            guard let http = response as? HTTPURLResponse else {
+                // If response is invalid, try to load from storage
+                return loadSavedSources()
+            }
+            
+            guard (200..<300).contains(http.statusCode) else {
+                // If HTTP status is not OK, try to load from storage
+                return loadSavedSources()
+            }
+            
+            let decoder = JSONDecoder()
             let payload = try decoder.decode(SourcesAPIResponse.self, from: data)
-            return payload.sources
+            // Filter to only English sources
+            let englishSources = payload.sources
+                .filter { $0.language == "en" }
+                .map { Article.Source(id: $0.id, name: $0.name) }
+            
+            // Save successfully fetched sources
+            try? saveSources(englishSources)
+            
+            return englishSources
         } catch {
-            throw NewsAPIError.decoding(error)
+            // If fetch fails, try to load from storage
+            return loadSavedSources()
         }
+    }
+    
+    private func saveSources(_ sources: [Article.Source]) throws {
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(sources)
+        userDefaults.set(data, forKey: savedSourcesKey)
+    }
+    
+    func loadCachedSources() -> [Article.Source] {
+        return loadSavedSources()
+    }
+    
+    private func loadSavedSources() -> [Article.Source] {
+        guard let data = userDefaults.data(forKey: savedSourcesKey) else {
+            return []
+        }
+        let decoder = JSONDecoder()
+        guard let sources = try? decoder.decode([Article.Source].self, from: data) else {
+            return []
+        }
+        return sources
     }
 }
 
@@ -121,5 +159,15 @@ private struct NewsAPIResponse: Codable {
 
 private struct SourcesAPIResponse: Codable {
     let status: String
-    let sources: [Article.Source]
+    let sources: [SourceResponse]
+}
+
+private struct SourceResponse: Codable {
+    let id: String?
+    let name: String
+    let description: String?
+    let url: String?
+    let category: String?
+    let language: String?
+    let country: String?
 }

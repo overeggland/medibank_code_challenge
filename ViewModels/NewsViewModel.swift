@@ -14,6 +14,9 @@ final class NewsViewModel: ObservableObject {
 
     init(service: NewsServicing) {
         self.service = service
+        // Load cached sources immediately on init
+        sources = service.loadCachedSources()
+        sources.sort { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
     }
 
     func loadTopHeadlines(country: NewsCountry = .us, category: NewsCategory? = .business) async {
@@ -36,10 +39,23 @@ final class NewsViewModel: ObservableObject {
         sourcesErrorMessage = nil
 
         do {
-            sources = try await service.fetchSources()
+            let fetchedSources = try await service.fetchSources()
+            sources = fetchedSources
             sources.sort { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+            // Clear error message if we successfully got sources (even if from cache)
+            if !sources.isEmpty {
+                sourcesErrorMessage = nil
+            }
         } catch {
-            sourcesErrorMessage = error.localizedDescription
+            // If fetch fails, try to load from cache
+            let cachedSources = service.loadCachedSources()
+            if !cachedSources.isEmpty {
+                sources = cachedSources
+                sources.sort { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+                sourcesErrorMessage = nil
+            } else {
+                sourcesErrorMessage = error.localizedDescription
+            }
         }
 
         isLoadingSources = false
