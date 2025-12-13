@@ -2,11 +2,14 @@ import SwiftUI
 
 struct ArticleRow: View {
     let article: Article
+    @Binding var navigationPath: NavigationPath
     @EnvironmentObject private var savedArticlesViewModel: SavedArticlesViewModel
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            NavigationLink(destination: ArticleDetailView(article: article)) {
+            Button {
+                navigationPath.append(article)
+            } label: {
                 HStack(alignment: .top, spacing: 12) {
                     if let imageURL = article.urlToImage {
                         AsyncImage(url: imageURL) { phase in
@@ -35,7 +38,7 @@ struct ArticleRow: View {
                         Text(article.title)
                             .font(.headline)
                             .foregroundStyle(.primary)
-                            .lineLimit(3)
+                            .lineLimit(4)
 
                         if let description = article.description {
                             Text(description)
@@ -56,19 +59,13 @@ struct ArticleRow: View {
             }
             .buttonStyle(.plain)
             
-            HStack(spacing: 8) {
-                Button {
-                    savedArticlesViewModel.toggleSaveArticle(article)
-                } label: {
-                    Image(systemName: savedArticlesViewModel.isArticleSaved(article) ? "heart.fill" : "heart")
-                        .foregroundStyle(savedArticlesViewModel.isArticleSaved(article) ? .red : .secondary)
-                }
-                .buttonStyle(.plain)
-                
-                Image(systemName: "chevron.right")
-                    .font(.caption)
-                    .foregroundStyle(.tertiary)
+            Button {
+                savedArticlesViewModel.toggleSaveArticle(article)
+            } label: {
+                Image(systemName: savedArticlesViewModel.isArticleSaved(article) ? "heart.fill" : "heart")
+                    .foregroundStyle(savedArticlesViewModel.isArticleSaved(article) ? .red : .secondary)
             }
+            .buttonStyle(.plain)
             .padding(.top, 6)
         }
     }
@@ -81,7 +78,7 @@ struct ArticleRow: View {
 
 struct ArticleRow_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleRow(article: .preview)
+        ArticleRow(article: .preview, navigationPath: .constant(NavigationPath()))
             .environmentObject(SavedArticlesViewModel(service: SavedArticlesService()))
             .previewLayout(.sizeThatFits)
             .padding()

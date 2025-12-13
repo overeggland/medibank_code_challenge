@@ -2,9 +2,10 @@ import SwiftUI
 
 struct SavedArticlesListView: View {
     @EnvironmentObject private var savedArticlesViewModel: SavedArticlesViewModel
+    @State private var navigationPath = NavigationPath()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             Group {
                 if savedArticlesViewModel.savedArticles.isEmpty {
                     ContentUnavailableView(
@@ -14,9 +15,12 @@ struct SavedArticlesListView: View {
                     )
                 } else {
                     List(savedArticlesViewModel.savedArticles) { article in
-                        ArticleRow(article: article)
+                        ArticleRow(article: article, navigationPath: $navigationPath)
                     }
                     .listStyle(.plain)
+                    .navigationDestination(for: Article.self) { article in
+                        ArticleDetailView(article: article)
+                    }
                 }
             }
             .navigationTitle("Saved Articles")
