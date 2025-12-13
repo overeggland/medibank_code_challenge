@@ -12,7 +12,9 @@ struct NewsService: NewsServicing {
     private let userDefaults: UserDefaults
     private let savedSourcesKey = "savedEnglishSources"
     
-    init(apiKey: String = NewsAPIConstants.defaultAPIKey, session: URLSession = .shared, userDefaults: UserDefaults = .standard) {
+    init(apiKey: String = NewsAPIConstants.defaultAPIKey,
+         session: URLSession = .shared,
+         userDefaults: UserDefaults = .standard) {
         self.apiKey = apiKey
         self.session = session
         self.userDefaults = userDefaults
@@ -26,16 +28,12 @@ struct NewsService: NewsServicing {
         let finalCategory: NewsCategory?
         let finalSources: String?
         
-        if hasSources {
+        let params: (NewsCountry?, NewsCategory?, String?) = if hasSources {
             // When sources is provided, ignore country and category
-            finalCountry = nil
-            finalCategory = nil
-            finalSources = sources
+            (nil, nil, sources)
         } else {
             // Use country and category (with defaults)
-            finalCountry = country
-            finalCategory = category
-            finalSources = nil
+            (country, category, nil)
         }
         
         // If API key is empty, return preview data (for testing/preview mode)
@@ -43,7 +41,7 @@ struct NewsService: NewsServicing {
             return Article.previews
         }
 
-        guard let url = NewsAPIConstants.topHeadlinesURL(country: finalCountry, category: finalCategory, sources: finalSources, pageSize: pageSize, apiKey: apiKey) else {
+        guard let url = NewsAPIConstants.topHeadlinesURL(country: params.0, category: params.1, sources: params.2, pageSize: pageSize, apiKey: apiKey) else {
             throw NewsAPIError.invalidResponse
         }
 
