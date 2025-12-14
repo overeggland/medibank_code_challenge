@@ -52,6 +52,17 @@
                ReferencedContainer = "container:MedibankNews.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E24834AD2EEE504100E1DF3D"
+               BuildableName = "MedibankNewsUITests.xctest"
+               BlueprintName = "MedibankNewsUITests"
+               ReferencedContainer = "container:MedibankNews.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

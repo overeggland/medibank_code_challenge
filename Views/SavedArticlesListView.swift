@@ -15,11 +15,11 @@ struct SavedArticlesListView: View {
                     )
                 } else {
                     List {
-                        ForEach(Array(savedArticlesViewModel.savedArticles.enumerated()), id: \.element.id) { index, article in
+                        ForEach(savedArticlesViewModel.savedArticles, id: \.id) { article in
                             ArticleRow(
                                 article: article,
                                 navigationPath: $navigationPath,
-                                style: index % 2 == 0 ? .horizontal : .card
+                                style: .compact
                             )
                         }
                     }

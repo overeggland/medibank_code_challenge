@@ -26,7 +26,7 @@ struct ArticleListView: View {
                             ArticleRow(
                                 article: article,
                                 navigationPath: $navigationPath,
-                                style: index == 0 ? .horizontal : .card
+                                style: index > 0 ? .horizontal : .card
                             )
                         }
                     }
