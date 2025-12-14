@@ -47,22 +47,6 @@ struct SourcesListView: View {
                 }
             }
             .navigationTitle("Sources")
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    if !viewModel.selectedSources.isEmpty {
-                        Button("Clear") {
-                            viewModel.clearSourceSelection()
-                        }
-                    }
-                    
-                    Button {
-                        Task { await viewModel.loadSources() }
-                    } label: {
-                        Image(systemName: "arrow.clockwise")
-                    }
-                    .disabled(viewModel.isLoadingSources)
-                }
-            }
         }
         .task {
             if viewModel.sources.isEmpty {
