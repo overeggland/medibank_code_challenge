@@ -2,6 +2,14 @@ import SwiftUI
 
 struct SourcesListView: View {
     @EnvironmentObject private var viewModel: NewsViewModel
+    
+    private var selectedSources: [Article.Source] {
+        viewModel.sources.filter { viewModel.isSourceSelected($0) }
+    }
+    
+    private var unselectedSources: [Article.Source] {
+        viewModel.sources.filter { !viewModel.isSourceSelected($0) }
+    }
 
     var body: some View {
         NavigationStack {
@@ -14,35 +22,26 @@ struct SourcesListView: View {
                 } else if viewModel.sources.isEmpty {
                     ContentUnavailableView("No sources", systemImage: "tray", description: Text("Tap refresh to load sources."))
                 } else {
-                    List(viewModel.sources, id: \.self) { source in
-                        Button {
-                            viewModel.toggleSourceSelection(source)
-                        } label: {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(source.name)
-                                        .font(.headline)
-                                        .foregroundStyle(.primary)
-                                    if let id = source.id {
-                                        Text(id)
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-                                    }
+                    List {
+                        if !selectedSources.isEmpty {
+                            Section {
+                                ForEach(selectedSources, id: \.self) { source in
+                                    sourceRow(for: source)
                                 }
-                                
-                                Spacer()
-                                
-                                if viewModel.isSourceSelected(source) {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundStyle(.blue)
-                                } else {
-                                    Image(systemName: "circle")
-                                        .foregroundStyle(.secondary)
-                                }
+                            } header: {
+                                Text("Selected Sources")
                             }
-                            .padding(.vertical, 6)
                         }
-                        .buttonStyle(.plain)
+                        
+                        if !unselectedSources.isEmpty {
+                            Section {
+                                ForEach(unselectedSources, id: \.self) { source in
+                                    sourceRow(for: source)
+                                }
+                            } header: {
+                                Text("Available Sources")
+                            }
+                        }
                     }
                 }
             }
@@ -53,6 +52,38 @@ struct SourcesListView: View {
                 await viewModel.loadSources()
             }
         }
+    }
+    
+    @ViewBuilder
+    private func sourceRow(for source: Article.Source) -> some View {
+        Button {
+            viewModel.toggleSourceSelection(source)
+        } label: {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(source.name)
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                    if let id = source.id {
+                        Text(id)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                
+                Spacer()
+                
+                if viewModel.isSourceSelected(source) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(.blue)
+                } else {
+                    Image(systemName: "circle")
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding(.vertical, 6)
+        }
+        .buttonStyle(.plain)
     }
 }
 
