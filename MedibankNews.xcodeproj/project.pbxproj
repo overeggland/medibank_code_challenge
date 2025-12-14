@@ -12,6 +12,7 @@
 		OBJ_APP_BUILD /* MedibankNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_APP_FILE /* MedibankNewsApp.swift */; };
 		OBJ_ARTICLE_BUILD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLE_FILE /* Article.swift */; };
 		OBJ_ASSETS_BUILD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_ASSETS_FILE /* Assets.xcassets */; };
+		OBJ_LAUNCHSCREEN_BUILD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_LAUNCHSCREEN_FILE /* LaunchScreen.storyboard */; };
 		OBJ_CONSTANTS_BUILD /* NewsAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */; };
 		OBJ_DETAILVIEW_BUILD /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_DETAILVIEW_FILE /* ArticleDetailView.swift */; };
 		OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_LISTVIEW_FILE /* ArticleListView.swift */; };
@@ -47,6 +48,7 @@
 		OBJ_APP_FILE /* MedibankNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedibankNewsApp.swift; sourceTree = "<group>"; };
 		OBJ_ARTICLE_FILE /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		OBJ_ASSETS_FILE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		OBJ_LAUNCHSCREEN_FILE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIConstants.swift; sourceTree = "<group>"; };
 		OBJ_DETAILVIEW_FILE /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		OBJ_LISTVIEW_FILE /* ArticleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				OBJ_SOURCES_GROUP /* Sources */,
 				OBJ_RESOURCES_GROUP /* Resources */,
 				OBJ_PLIST_FILE /* Info.plist */,
+				OBJ_LAUNCHSCREEN_FILE /* LaunchScreen.storyboard */,
 				OBJ_PRODUCTS_GROUP /* Products */,
 				OBJ_TESTS_GROUP /* MedibankNewsTests */,
 			);
@@ -296,6 +299,7 @@
 			files = (
 				OBJ_ASSETS_BUILD /* Assets.xcassets in Resources */,
 				OBJ_LOCALIZABLE_BUILD /* Localizable.strings in Resources */,
+				OBJ_LAUNCHSCREEN_BUILD /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
