@@ -18,6 +18,7 @@ struct ArticleDetailView: View {
                             Image(systemName: isSaved ? "heart.fill" : "heart")
                                 .foregroundStyle(isSaved ? .red : .primary)
                         }
+                        .accessibilityIdentifier("save_detail_\(article.shortID)")
                         
                         ShareLink(item: article.url) {
                             Image(systemName: "square.and.arrow.up")

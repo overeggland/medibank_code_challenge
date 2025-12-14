@@ -11,6 +11,22 @@ struct Article: Identifiable, Codable, Hashable {
     let source: Source
 
     var id: String { url.absoluteString }
+    
+    /// Short identifier for UI testing (hash of URL)
+    var shortID: String {
+        let urlString = url.absoluteString
+        var hash = 0
+        for char in urlString.utf8 {
+            hash = ((hash << 5) &- hash) &+ Int(char)
+        }
+        let hashString = String(abs(hash))
+        // Take last 8 characters, pad if needed
+        if hashString.count >= 8 {
+            return String(hashString.suffix(8))
+        } else {
+            return String(repeating: "0", count: 8 - hashString.count) + hashString
+        }
+    }
 
     struct Source: Codable, Hashable {
         let id: String?
