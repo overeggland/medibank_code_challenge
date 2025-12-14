@@ -21,6 +21,10 @@
 		OBJ_MOCKSAVED_BUILD /* MockSavedArticlesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_MOCKSAVED_FILE /* MockSavedArticlesService.swift */; };
 		OBJ_NEWSSERVICETEST_BUILD /* NewsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_NEWSSERVICETEST_FILE /* NewsServiceTests.swift */; };
 		OBJ_NEWSVIEWMODELTEST_BUILD /* NewsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_NEWSVIEWMODELTEST_FILE /* NewsViewModelTests.swift */; };
+		OBJ_ARTICLEROW_SNAPSHOT_BUILD /* ArticleRowSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLEROW_SNAPSHOT_FILE /* ArticleRowSnapshotTests.swift */; };
+		OBJ_ARTICLELISTVIEW_SNAPSHOT_BUILD /* ArticleListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLELISTVIEW_SNAPSHOT_FILE /* ArticleListViewSnapshotTests.swift */; };
+		OBJ_SAVEDARTICLESLISTVIEW_SNAPSHOT_BUILD /* SavedArticlesListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDARTICLESLISTVIEW_SNAPSHOT_FILE /* SavedArticlesListViewSnapshotTests.swift */; };
+		OBJ_SOURCESLISTVIEW_SNAPSHOT_BUILD /* SourcesListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SOURCESLISTVIEW_SNAPSHOT_FILE /* SourcesListViewSnapshotTests.swift */; };
 		OBJ_ROW_BUILD /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ROW_FILE /* ArticleRow.swift */; };
 		OBJ_SAVEDLISTVIEW_BUILD /* SavedArticlesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDLISTVIEW_FILE /* SavedArticlesListView.swift */; };
 		OBJ_SAVEDSERVICETEST_BUILD /* SavedArticlesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDSERVICETEST_FILE /* SavedArticlesServiceTests.swift */; };
@@ -65,6 +69,10 @@
 		OBJ_MOCKSAVED_FILE /* MockSavedArticlesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSavedArticlesService.swift; sourceTree = "<group>"; };
 		OBJ_NEWSSERVICETEST_FILE /* NewsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsServiceTests.swift; sourceTree = "<group>"; };
 		OBJ_NEWSVIEWMODELTEST_FILE /* NewsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModelTests.swift; sourceTree = "<group>"; };
+		OBJ_ARTICLEROW_SNAPSHOT_FILE /* ArticleRowSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowSnapshotTests.swift; sourceTree = "<group>"; };
+		OBJ_ARTICLELISTVIEW_SNAPSHOT_FILE /* ArticleListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewSnapshotTests.swift; sourceTree = "<group>"; };
+		OBJ_SAVEDARTICLESLISTVIEW_SNAPSHOT_FILE /* SavedArticlesListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesListViewSnapshotTests.swift; sourceTree = "<group>"; };
+		OBJ_SOURCESLISTVIEW_SNAPSHOT_FILE /* SourcesListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesListViewSnapshotTests.swift; sourceTree = "<group>"; };
 		OBJ_PLIST_FILE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_PRODUCT /* MedibankNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = MedibankNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_ROW_FILE /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 				OBJ_TESTS_MOCKS_GROUP /* Mocks */,
 				OBJ_TESTS_VIEWMODELS_GROUP /* ViewModels */,
 				OBJ_TESTS_SERVICES_GROUP /* Services */,
+				OBJ_TESTS_SNAPSHOTS_GROUP /* Snapshots */,
 			);
 			path = MedibankNewsTests;
 			sourceTree = "<group>";
@@ -215,6 +224,17 @@
 				OBJ_SAVEDVIEWMODELTEST_FILE /* SavedArticlesViewModelTests.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		OBJ_TESTS_SNAPSHOTS_GROUP /* Snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_ARTICLEROW_SNAPSHOT_FILE /* ArticleRowSnapshotTests.swift */,
+				OBJ_ARTICLELISTVIEW_SNAPSHOT_FILE /* ArticleListViewSnapshotTests.swift */,
+				OBJ_SAVEDARTICLESLISTVIEW_SNAPSHOT_FILE /* SavedArticlesListViewSnapshotTests.swift */,
+				OBJ_SOURCESLISTVIEW_SNAPSHOT_FILE /* SourcesListViewSnapshotTests.swift */,
+			);
+			path = Snapshots;
 			sourceTree = "<group>";
 		};
 		OBJ_UTILS_GROUP /* Utils */ = {
@@ -303,6 +323,9 @@
 				OBJ_TEST_TARGET_DEPENDENCY /* PBXTargetDependency */,
 			);
 			name = MedibankNewsTests;
+			packageProductDependencies = (
+				E24834BD2EEE878B00E1DF3D /* SnapshotTesting */,
+			);
 			productName = MedibankNewsTests;
 			productReference = OBJ_TEST_PRODUCT /* MedibankNewsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -339,6 +362,9 @@
 				Base,
 			);
 			mainGroup = OBJ_ROOT_GROUP;
+			packageReferences = (
+				E24834BC2EEE878B00E1DF3D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = OBJ_PRODUCTS_GROUP /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -410,6 +436,10 @@
 				E24834A82EED894400E1DF3D /* Logger.swift in Sources */,
 				OBJ_NEWSSERVICETEST_BUILD /* NewsServiceTests.swift in Sources */,
 				OBJ_SAVEDSERVICETEST_BUILD /* SavedArticlesServiceTests.swift in Sources */,
+				OBJ_ARTICLEROW_SNAPSHOT_BUILD /* ArticleRowSnapshotTests.swift in Sources */,
+				OBJ_ARTICLELISTVIEW_SNAPSHOT_BUILD /* ArticleListViewSnapshotTests.swift in Sources */,
+				OBJ_SAVEDARTICLESLISTVIEW_SNAPSHOT_BUILD /* SavedArticlesListViewSnapshotTests.swift in Sources */,
+				OBJ_SOURCESLISTVIEW_SNAPSHOT_BUILD /* SourcesListViewSnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +770,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E24834BC2EEE878B00E1DF3D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E24834BD2EEE878B00E1DF3D /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E24834BC2EEE878B00E1DF3D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = OBJ_PROJECT /* Project object */;
 }

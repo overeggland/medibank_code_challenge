@@ -40,7 +40,7 @@ struct ArticleListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        Task { await viewModel.loadTopHeadlines() }
+                        Task { await viewModel.loadTopHeadlines(forceRefresh: true) }
                     } label: {
                         Image(systemName: "arrow.clockwise")
                     }

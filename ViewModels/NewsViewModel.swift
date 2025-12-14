@@ -3,20 +3,29 @@ import Foundation
 @MainActor
 final class NewsViewModel: ObservableObject {
     @Published private(set) var articles: [Article] = []
-    @Published private(set) var sources: [Article.Source] = []
     @Published private(set) var isLoading = false
     @Published private(set) var isLoadingSources = false
     @Published private(set) var errorMessage: String?
     @Published private(set) var sourcesErrorMessage: String?
+    @Published var sources: [Article.Source] = []
     @Published var selectedSources: Set<Article.Source> = [] {
         didSet {
             saveSelectedSources()
+            
+            // Automatically fetch headlines when sources change (but not during initialization)
+            if isInitialized && oldValue != selectedSources && !selectedSources.isEmpty {
+                Task {
+                    await loadTopHeadlines()
+                }
+            }
         }
     }
 
     private let service: NewsServicing
     private let userDefaults: UserDefaults
     private let selectedSourcesKey = "selectedSources"
+    private var lastFetchedSources: Set<Article.Source> = []
+    private var isInitialized = false
 
     init(service: NewsServicing, userDefaults: UserDefaults = .standard) {
         self.service = service
@@ -49,10 +58,20 @@ final class NewsViewModel: ObservableObject {
                 selectedSources = Set(defaultSources)
             }
         }
+        
+        // Mark as initialized after setting up sources
+        isInitialized = true
     }
 
-    func loadTopHeadlines(country: NewsCountry? = .us, category: NewsCategory? = .business, sources: String? = nil) async {
+    func loadTopHeadlines(country: NewsCountry? = .us, category: NewsCategory? = .business, sources: String? = nil, forceRefresh: Bool = false) async {
         guard !isLoading else { return }
+        
+        // Check if selected sources have changed
+        // If sources haven't changed and we're not forcing a refresh, skip the API call
+        if !forceRefresh && !selectedSources.isEmpty && selectedSources == lastFetchedSources && !articles.isEmpty {
+            return
+        }
+        
         isLoading = true
         errorMessage = nil
 
@@ -73,6 +92,9 @@ final class NewsViewModel: ObservableObject {
             }
             
             articles = try await service.fetchTopHeadlines(country: country, category: category, sources: sourcesString, pageSize: pageSize)
+            
+            // Update last fetched sources after successful fetch
+            lastFetchedSources = selectedSources
         } catch {
             errorMessage = error.localizedDescription
         }

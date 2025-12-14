@@ -16,6 +16,13 @@ This directory contains comprehensive unit tests for the MedibankNews app.
   - `NewsServiceTests.swift`: Tests for `NewsService` and API integration
   - `SavedArticlesServiceTests.swift`: Tests for `SavedArticlesService` and persistence
 
+- **Snapshots/**: Snapshot tests for SwiftUI views
+  - `ArticleRowSnapshotTests.swift`: Snapshot tests for ArticleRow component
+  - `ArticleListViewSnapshotTests.swift`: Snapshot tests for ArticleListView
+  - `SavedArticlesListViewSnapshotTests.swift`: Snapshot tests for SavedArticlesListView
+  - `SourcesListViewSnapshotTests.swift`: Snapshot tests for SourcesListView
+  - See `Snapshots/README.md` for detailed documentation
+
 ## Setup
 
 To run these tests, you need to:
@@ -88,3 +95,22 @@ To run these tests, you need to:
 - `SavedArticlesServiceTests` uses a separate UserDefaults suite to avoid interfering with app data
 - All async tests use `@MainActor` annotation for ViewModel tests
 - Tests follow the Arrange-Act-Assert pattern for clarity
+
+## Snapshot Testing
+
+This project includes snapshot tests using the [SnapshotTesting](https://github.com/pointfreeco/swift-snapshot-testing) library.
+
+### Setup Snapshot Testing
+
+1. Add the SnapshotTesting package (see `Snapshots/SETUP.md` for detailed instructions)
+2. Run tests with `isRecording = true` to generate initial snapshots
+3. Remove `isRecording = true` and run again to verify
+
+### Snapshot Test Coverage
+
+- ✅ ArticleRow (all styles: horizontal, card, compact)
+- ✅ ArticleListView (loading, error, empty, and populated states)
+- ✅ SavedArticlesListView (empty and populated states)
+- ✅ SourcesListView (loading, error, empty, and populated states)
+
+See `Snapshots/README.md` for more details.

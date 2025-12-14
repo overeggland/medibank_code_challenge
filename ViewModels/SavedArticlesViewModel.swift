@@ -2,7 +2,7 @@ import Foundation
 
 @MainActor
 final class SavedArticlesViewModel: ObservableObject {
-    @Published private(set) var savedArticles: [Article] = []
+    @Published var savedArticles: [Article] = []
     
     private let service: SavedArticlesServicing
     private var hasLoggedInitialLoad = false
