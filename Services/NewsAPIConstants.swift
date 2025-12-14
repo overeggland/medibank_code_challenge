@@ -29,7 +29,11 @@ enum NewsAPIConstants {
 }
 
 extension NewsAPIConstants {
-    static func topHeadlinesURL(country: NewsCountry?, category: NewsCategory?, sources: String?, pageSize: Int = defaultPageSize, apiKey: String) -> URL? {
+    static func topHeadlinesURL(country: NewsCountry?,
+                                category: NewsCategory?,
+                                sources: String?,
+                                pageSize: Int = defaultPageSize,
+                                apiKey: String) -> URL? {
         var components = URLComponents(string: "\(baseURLString)\(topHeadlinesPath)")
         var queryItems: [URLQueryItem] = [
             URLQueryItem(name: "apiKey", value: apiKey),

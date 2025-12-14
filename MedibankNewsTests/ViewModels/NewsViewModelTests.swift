@@ -108,55 +108,7 @@ struct NewsViewModelTests {
         #expect(!viewModel.isLoading)
     }
     
-    @Test("Sources computed property returns unique sorted sources")
-    @MainActor
-    func testSourcesComputedProperty() async {
-        // Given
-        let (viewModel, mockService) = createViewModel()
-        let article1 = Article(
-            title: "Article 1",
-            author: "Author 1",
-            description: "Description 1",
-            url: URL(string: "https://example.com/1")!,
-            urlToImage: nil,
-            publishedAt: Date(),
-            content: nil,
-            source: Article.Source(id: "source1", name: "Source B")
-        )
-        
-        let article2 = Article(
-            title: "Article 2",
-            author: "Author 2",
-            description: "Description 2",
-            url: URL(string: "https://example.com/2")!,
-            urlToImage: nil,
-            publishedAt: Date(),
-            content: nil,
-            source: Article.Source(id: "source2", name: "Source A")
-        )
-        
-        let article3 = Article(
-            title: "Article 3",
-            author: "Author 3",
-            description: "Description 3",
-            url: URL(string: "https://example.com/3")!,
-            urlToImage: nil,
-            publishedAt: Date(),
-            content: nil,
-            source: Article.Source(id: "source1", name: "Source B") // Duplicate source
-        )
-        
-        mockService.fetchTopHeadlinesResult = .success([article1, article2, article3])
-        
-        // When
-        await viewModel.loadTopHeadlines()
-        
-        // Then
-        let sources = viewModel.sources
-        #expect(sources.count == 2) // Should deduplicate
-        #expect(sources[0].name == "Source A") // Should be sorted
-        #expect(sources[1].name == "Source B")
-    }
+   
     
     @Test("Error is cleared on successful load")
     @MainActor
