@@ -16,10 +16,9 @@ struct SavedArticlesListView: View {
                 } else {
                     List {
                         ForEach(savedArticlesViewModel.savedArticles, id: \.id) { article in
-                            ArticleRow(
+                            CompactArticleRow(
                                 article: article,
-                                navigationPath: $navigationPath,
-                                style: .compact
+                                navigationPath: $navigationPath
                             )
                         }
                     }

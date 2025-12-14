@@ -21,10 +21,9 @@ final class ArticleRowSnapshotTests: XCTestCase {
     // MARK: - Horizontal Style Tests
     
     func testArticleRowHorizontalStyle() {
-        let view = ArticleRow(
+        let view = HorizontalArticleRow(
             article: .preview,
-            navigationPath: .constant(NavigationPath()),
-            style: .horizontal
+            navigationPath: .constant(NavigationPath())
         )
         .environmentObject(savedArticlesViewModel)
         .frame(width: 375, height: 120)
@@ -45,10 +44,9 @@ final class ArticleRowSnapshotTests: XCTestCase {
             source: Article.Source(id: nil, name: "Test Source")
         )
         
-        let view = ArticleRow(
+        let view = HorizontalArticleRow(
             article: article,
-            navigationPath: .constant(NavigationPath()),
-            style: .horizontal
+            navigationPath: .constant(NavigationPath())
         )
         .environmentObject(savedArticlesViewModel)
         .frame(width: 375, height: 120)
@@ -60,10 +58,9 @@ final class ArticleRowSnapshotTests: XCTestCase {
     // MARK: - Card Style Tests
     
     func testArticleRowCardStyle() {
-        let view = ArticleRow(
+        let view = CardArticleRow(
             article: .preview,
-            navigationPath: .constant(NavigationPath()),
-            style: .card
+            navigationPath: .constant(NavigationPath())
         )
         .environmentObject(savedArticlesViewModel)
         .frame(width: 375, height: 350)
@@ -84,10 +81,9 @@ final class ArticleRowSnapshotTests: XCTestCase {
             source: Article.Source(id: nil, name: "Test Source")
         )
         
-        let view = ArticleRow(
+        let view = CardArticleRow(
             article: article,
-            navigationPath: .constant(NavigationPath()),
-            style: .card
+            navigationPath: .constant(NavigationPath())
         )
         .environmentObject(savedArticlesViewModel)
         .frame(width: 375, height: 250)
@@ -99,10 +95,9 @@ final class ArticleRowSnapshotTests: XCTestCase {
     // MARK: - Compact Style Tests
     
     func testArticleRowCompactStyle() {
-        let view = ArticleRow(
+        let view = CompactArticleRow(
             article: .preview,
-            navigationPath: .constant(NavigationPath()),
-            style: .compact
+            navigationPath: .constant(NavigationPath())
         )
         .environmentObject(savedArticlesViewModel)
         .frame(width: 375, height: 100)
@@ -123,10 +118,9 @@ final class ArticleRowSnapshotTests: XCTestCase {
             source: Article.Source(id: "long", name: "Long Title Source")
         )
         
-        let view = ArticleRow(
+        let view = CompactArticleRow(
             article: article,
-            navigationPath: .constant(NavigationPath()),
-            style: .compact
+            navigationPath: .constant(NavigationPath())
         )
         .environmentObject(savedArticlesViewModel)
         .frame(width: 375, height: 120)
@@ -141,10 +135,9 @@ final class ArticleRowSnapshotTests: XCTestCase {
         // Save the article first
         savedArticlesViewModel.saveArticle(.preview)
         
-        let view = ArticleRow(
+        let view = HorizontalArticleRow(
             article: .preview,
-            navigationPath: .constant(NavigationPath()),
-            style: .horizontal
+            navigationPath: .constant(NavigationPath())
         )
         .environmentObject(savedArticlesViewModel)
         .frame(width: 375, height: 120)
@@ -157,10 +150,9 @@ final class ArticleRowSnapshotTests: XCTestCase {
         // Save the article first
         savedArticlesViewModel.saveArticle(.preview)
         
-        let view = ArticleRow(
+        let view = CardArticleRow(
             article: .preview,
-            navigationPath: .constant(NavigationPath()),
-            style: .card
+            navigationPath: .constant(NavigationPath())
         )
         .environmentObject(savedArticlesViewModel)
         .frame(width: 375, height: 350)

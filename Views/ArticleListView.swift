@@ -23,11 +23,17 @@ struct ArticleListView: View {
                 } else {
                     List {
                         ForEach(Array(viewModel.filteredArticles.enumerated()), id: \.element.id) { index, article in
-                            ArticleRow(
-                                article: article,
-                                navigationPath: $navigationPath,
-                                style: index > 0 ? .horizontal : .card
-                            )
+                            if index == 0 {
+                                CardArticleRow(
+                                    article: article,
+                                    navigationPath: $navigationPath
+                                )
+                            } else {
+                                HorizontalArticleRow(
+                                    article: article,
+                                    navigationPath: $navigationPath
+                                )
+                            }
                         }
                     }
                     .listStyle(.plain)
