@@ -9,7 +9,13 @@
 /* Begin PBXBuildFile section */
 		E24834A72EED894400E1DF3D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24834A62EED894400E1DF3D /* Logger.swift */; };
 		E24834A82EED894400E1DF3D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24834A62EED894400E1DF3D /* Logger.swift */; };
+		E24834FB2EEEB62D00E1DF3D /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E24834BD2EEE878B00E1DF3D /* SnapshotTesting */; };
+		E24835052EEEB87900E1DF3D /* CardArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24835022EEEB87900E1DF3D /* CardArticleRow.swift */; };
+		E24835062EEEB87900E1DF3D /* HorizontalArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24835042EEEB87900E1DF3D /* HorizontalArticleRow.swift */; };
+		E24835072EEEB87900E1DF3D /* CompactArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24835032EEEB87900E1DF3D /* CompactArticleRow.swift */; };
 		OBJ_APP_BUILD /* MedibankNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_APP_FILE /* MedibankNewsApp.swift */; };
+		OBJ_ARTICLELISTVIEW_SNAPSHOT_BUILD /* ArticleListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLELISTVIEW_SNAPSHOT_FILE /* ArticleListViewSnapshotTests.swift */; };
+		OBJ_ARTICLEROW_SNAPSHOT_BUILD /* ArticleRowSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLEROW_SNAPSHOT_FILE /* ArticleRowSnapshotTests.swift */; };
 		OBJ_ARTICLE_BUILD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLE_FILE /* Article.swift */; };
 		OBJ_ASSETS_BUILD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = OBJ_ASSETS_FILE /* Assets.xcassets */; };
 		OBJ_CONSTANTS_BUILD /* NewsAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */; };
@@ -21,17 +27,14 @@
 		OBJ_MOCKSAVED_BUILD /* MockSavedArticlesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_MOCKSAVED_FILE /* MockSavedArticlesService.swift */; };
 		OBJ_NEWSSERVICETEST_BUILD /* NewsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_NEWSSERVICETEST_FILE /* NewsServiceTests.swift */; };
 		OBJ_NEWSVIEWMODELTEST_BUILD /* NewsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_NEWSVIEWMODELTEST_FILE /* NewsViewModelTests.swift */; };
-		OBJ_ARTICLEROW_SNAPSHOT_BUILD /* ArticleRowSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLEROW_SNAPSHOT_FILE /* ArticleRowSnapshotTests.swift */; };
-		OBJ_ARTICLELISTVIEW_SNAPSHOT_BUILD /* ArticleListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ARTICLELISTVIEW_SNAPSHOT_FILE /* ArticleListViewSnapshotTests.swift */; };
 		OBJ_SAVEDARTICLESLISTVIEW_SNAPSHOT_BUILD /* SavedArticlesListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDARTICLESLISTVIEW_SNAPSHOT_FILE /* SavedArticlesListViewSnapshotTests.swift */; };
-		OBJ_SOURCESLISTVIEW_SNAPSHOT_BUILD /* SourcesListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SOURCESLISTVIEW_SNAPSHOT_FILE /* SourcesListViewSnapshotTests.swift */; };
-		OBJ_ROW_BUILD /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_ROW_FILE /* ArticleRow.swift */; };
 		OBJ_SAVEDLISTVIEW_BUILD /* SavedArticlesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDLISTVIEW_FILE /* SavedArticlesListView.swift */; };
 		OBJ_SAVEDSERVICETEST_BUILD /* SavedArticlesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDSERVICETEST_FILE /* SavedArticlesServiceTests.swift */; };
 		OBJ_SAVEDSERVICE_BUILD /* SavedArticlesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDSERVICE_FILE /* SavedArticlesService.swift */; };
 		OBJ_SAVEDVIEWMODELTEST_BUILD /* SavedArticlesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDVIEWMODELTEST_FILE /* SavedArticlesViewModelTests.swift */; };
 		OBJ_SAVEDVIEWMODEL_BUILD /* SavedArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SAVEDVIEWMODEL_FILE /* SavedArticlesViewModel.swift */; };
 		OBJ_SERVICE_BUILD /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SERVICE_FILE /* NewsService.swift */; };
+		OBJ_SOURCESLISTVIEW_SNAPSHOT_BUILD /* SourcesListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SOURCESLISTVIEW_SNAPSHOT_FILE /* SourcesListViewSnapshotTests.swift */; };
 		OBJ_SOURCESVIEW_BUILD /* SourcesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_SOURCESVIEW_FILE /* SourcesListView.swift */; };
 		OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */; };
 		OBJ_WEBVIEW_BUILD /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_WEBVIEW_FILE /* WebView.swift */; };
@@ -57,7 +60,12 @@
 /* Begin PBXFileReference section */
 		E24834A62EED894400E1DF3D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E24834AE2EEE504100E1DF3D /* MedibankNewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedibankNewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E24835022EEEB87900E1DF3D /* CardArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArticleRow.swift; sourceTree = "<group>"; };
+		E24835032EEEB87900E1DF3D /* CompactArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactArticleRow.swift; sourceTree = "<group>"; };
+		E24835042EEEB87900E1DF3D /* HorizontalArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalArticleRow.swift; sourceTree = "<group>"; };
 		OBJ_APP_FILE /* MedibankNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedibankNewsApp.swift; sourceTree = "<group>"; };
+		OBJ_ARTICLELISTVIEW_SNAPSHOT_FILE /* ArticleListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewSnapshotTests.swift; sourceTree = "<group>"; };
+		OBJ_ARTICLEROW_SNAPSHOT_FILE /* ArticleRowSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowSnapshotTests.swift; sourceTree = "<group>"; };
 		OBJ_ARTICLE_FILE /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		OBJ_ASSETS_FILE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		OBJ_CONSTANTS_FILE /* NewsAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIConstants.swift; sourceTree = "<group>"; };
@@ -69,19 +77,16 @@
 		OBJ_MOCKSAVED_FILE /* MockSavedArticlesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSavedArticlesService.swift; sourceTree = "<group>"; };
 		OBJ_NEWSSERVICETEST_FILE /* NewsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsServiceTests.swift; sourceTree = "<group>"; };
 		OBJ_NEWSVIEWMODELTEST_FILE /* NewsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModelTests.swift; sourceTree = "<group>"; };
-		OBJ_ARTICLEROW_SNAPSHOT_FILE /* ArticleRowSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowSnapshotTests.swift; sourceTree = "<group>"; };
-		OBJ_ARTICLELISTVIEW_SNAPSHOT_FILE /* ArticleListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewSnapshotTests.swift; sourceTree = "<group>"; };
-		OBJ_SAVEDARTICLESLISTVIEW_SNAPSHOT_FILE /* SavedArticlesListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesListViewSnapshotTests.swift; sourceTree = "<group>"; };
-		OBJ_SOURCESLISTVIEW_SNAPSHOT_FILE /* SourcesListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesListViewSnapshotTests.swift; sourceTree = "<group>"; };
 		OBJ_PLIST_FILE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_PRODUCT /* MedibankNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = MedibankNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_ROW_FILE /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
+		OBJ_SAVEDARTICLESLISTVIEW_SNAPSHOT_FILE /* SavedArticlesListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesListViewSnapshotTests.swift; sourceTree = "<group>"; };
 		OBJ_SAVEDLISTVIEW_FILE /* SavedArticlesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesListView.swift; sourceTree = "<group>"; };
 		OBJ_SAVEDSERVICETEST_FILE /* SavedArticlesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesServiceTests.swift; sourceTree = "<group>"; };
 		OBJ_SAVEDSERVICE_FILE /* SavedArticlesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesService.swift; sourceTree = "<group>"; };
 		OBJ_SAVEDVIEWMODELTEST_FILE /* SavedArticlesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesViewModelTests.swift; sourceTree = "<group>"; };
 		OBJ_SAVEDVIEWMODEL_FILE /* SavedArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesViewModel.swift; sourceTree = "<group>"; };
 		OBJ_SERVICE_FILE /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		OBJ_SOURCESLISTVIEW_SNAPSHOT_FILE /* SourcesListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesListViewSnapshotTests.swift; sourceTree = "<group>"; };
 		OBJ_SOURCESVIEW_FILE /* SourcesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesListView.swift; sourceTree = "<group>"; };
 		OBJ_TEST_PRODUCT /* MedibankNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = MedibankNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_VIEWMODEL_FILE /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
@@ -111,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24834FB2EEEB62D00E1DF3D /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +126,9 @@
 		E24834BB2EEE6F0E00E1DF3D /* CellStyles */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_ROW_FILE /* ArticleRow.swift */,
+				E24835022EEEB87900E1DF3D /* CardArticleRow.swift */,
+				E24835032EEEB87900E1DF3D /* CompactArticleRow.swift */,
+				E24835042EEEB87900E1DF3D /* HorizontalArticleRow.swift */,
 			);
 			path = CellStyles;
 			sourceTree = "<group>";
@@ -217,15 +225,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		OBJ_TESTS_VIEWMODELS_GROUP /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_NEWSVIEWMODELTEST_FILE /* NewsViewModelTests.swift */,
-				OBJ_SAVEDVIEWMODELTEST_FILE /* SavedArticlesViewModelTests.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		OBJ_TESTS_SNAPSHOTS_GROUP /* Snapshots */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +234,15 @@
 				OBJ_SOURCESLISTVIEW_SNAPSHOT_FILE /* SourcesListViewSnapshotTests.swift */,
 			);
 			path = Snapshots;
+			sourceTree = "<group>";
+		};
+		OBJ_TESTS_VIEWMODELS_GROUP /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_NEWSVIEWMODELTEST_FILE /* NewsViewModelTests.swift */,
+				OBJ_SAVEDVIEWMODELTEST_FILE /* SavedArticlesViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		OBJ_UTILS_GROUP /* Utils */ = {
@@ -414,9 +422,11 @@
 				OBJ_SERVICE_BUILD /* NewsService.swift in Sources */,
 				OBJ_VIEWMODEL_BUILD /* NewsViewModel.swift in Sources */,
 				OBJ_LISTVIEW_BUILD /* ArticleListView.swift in Sources */,
-				OBJ_ROW_BUILD /* ArticleRow.swift in Sources */,
 				OBJ_SOURCESVIEW_BUILD /* SourcesListView.swift in Sources */,
 				OBJ_WEBVIEW_BUILD /* WebView.swift in Sources */,
+				E24835052EEEB87900E1DF3D /* CardArticleRow.swift in Sources */,
+				E24835062EEEB87900E1DF3D /* HorizontalArticleRow.swift in Sources */,
+				E24835072EEEB87900E1DF3D /* CompactArticleRow.swift in Sources */,
 				E24834A72EED894400E1DF3D /* Logger.swift in Sources */,
 				OBJ_DETAILVIEW_BUILD /* ArticleDetailView.swift in Sources */,
 				OBJ_SAVEDSERVICE_BUILD /* SavedArticlesService.swift in Sources */,
