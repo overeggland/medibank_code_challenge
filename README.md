@@ -6,11 +6,22 @@ A modern iOS news application built with SwiftUI that provides users with top he
 
 MedibankNews is a native iOS application that fetches news articles from the NewsAPI and presents them in a clean, user-friendly interface. The app features a tab-based navigation system with three main sections: Headlines, Sources, and Saved Articles.
 
+## Screenshots
+
+The following screenshots showcase the main features of the MedibankNews app:
+
+![Headlines Tab](ScreenShots/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-14%20at%2021.19.19.png)
+*Headlines Tab - Displaying top news articles with dynamic row styles*
+
+![Sources Tab](ScreenShots/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-14%20at%2021.19.29.png)
+*Sources Tab - Managing news source preferences*
+
+![Saved Articles Tab](ScreenShots/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-14%20at%2021.19.41.png)
+*Saved Articles Tab - Viewing saved articles for later reading*
+
 ## App Icon
 
-The MedibankNews app icon is programmatically generated using a Python script (`generate_icon.py`) and features a distinctive design that reflects the app's purpose:
-
-The icon design effectively communicates the app's news-focused functionality while maintaining a clean, professional aesthetic that aligns with iOS design guidelines.
+The MedibankNews app icon is programmatically generated using a Python script (`generate_icon.py`)
 
 ## Architecture
 
@@ -31,7 +42,7 @@ The main page displays top headlines from selected news sources. It features:
 - **Loading States**: Shows a progress indicator while fetching articles
 - **Error Handling**: Displays user-friendly error messages when API calls fail
 - **Empty States**: Provides helpful messages when no sources are selected or no articles are available
-- **Pull-to-Refresh**: Manual refresh button in the navigation bar
+- **Refresh**: Manual refresh button in the navigation bar
 - **Navigation**: Tapping an article navigates to the detail view
 
 The view automatically filters articles based on selected sources and updates when source selection changes.
