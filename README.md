@@ -10,13 +10,13 @@ MedibankNews is a native iOS application that fetches news articles from the New
 
 The following screenshots showcase the main features of the MedibankNews app:
 
-![Headlines Tab](ScreenShots/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-14%20at%2021.19.19.png)
+<img src="ScreenShots/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-14%20at%2021.19.19.png" width="300" alt="Headlines Tab" />
 *Headlines Tab - Displaying top news articles with dynamic row styles*
 
-![Sources Tab](ScreenShots/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-14%20at%2021.19.29.png)
+<img src="ScreenShots/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-14%20at%2021.19.29.png" width="300" alt="Sources Tab" />
 *Sources Tab - Managing news source preferences*
 
-![Saved Articles Tab](ScreenShots/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-14%20at%2021.19.41.png)
+<img src="ScreenShots/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-14%20at%2021.19.41.png" width="300" alt="Saved Articles Tab" />
 *Saved Articles Tab - Viewing saved articles for later reading*
 
 ## App Icon
